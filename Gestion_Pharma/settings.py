@@ -83,12 +83,19 @@ WSGI_APPLICATION = 'Gestion_Pharma.wsgi.application'
 
 
 
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///{}'.format(BASE_DIR / 'db.sqlite3')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pharma_db_e5dg',
+        'USER': 'pharma_db_e5dg_user',
+        'PASSWORD': 'FuBOz2E0s8Ap99RWgoIkly8TEeM75qdh',
+        'HOST': 'dpg-d0nem1hr0fns738uvk20-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
 }
+
+
+
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
