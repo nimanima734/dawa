@@ -59,7 +59,7 @@
       <button onclick="window.location.href='{% url 'products' %}'">
         <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
       </button>
-      <button onclick="window.location.href='{% url 'statistic' %}'">
+      <button onclick="window.location.href='{% url 'afficher_statistiques' %}'">
         <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;Statistics
       </button>
       <button onclick="window.location.href='{% url 'show_notifications' %}'">
@@ -89,48 +89,49 @@
       <!-- <section class="search-filter-section">
         <form method="GET" action="{% url 'recherche' %}" class="search-bar">
           <div class="search-and-filter"> -->
-            <!-- Search by name -->
-            <!-- <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
+      <!-- Search by name -->
+      <!-- <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
             <input type="text" name="q" class="search-input" placeholder="Search by name..." value="{{ request.GET.q }}" /> -->
-      
-            <!-- Dropdown for category filter -->
-            <!-- <select name="category" class="filter-combobox" onchange="this.form.submit()">
+
+      <!-- Dropdown for category filter -->
+      <!-- <select name="category" class="filter-combobox" onchange="this.form.submit()">
               <option selected disabled>Choisir Catégorie</option>
               {% for category in categories %}
                 <option value="{{ category.id }}" {% if category.id == request.GET.category %} selected {% endif %}>{{ category.name }}</option>
               {% endfor %}
             </select> -->
-      
-            <!-- Submit button for search -->
-            <!-- <button type="submit">Search</button>
+
+      <!-- Submit button for search -->
+      <!-- <button type="submit">Search</button>
           
           </div>
         </form>
       </section> -->
       <section class="search-filter-section">
 
-  <!-- Form de recherche -->
-  <form method="GET" action="{% url 'recherche' %}" class="search-bar">
-    <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
-    <input type="text" name="q" class="search-input" placeholder="Search by name..." />
-    <button type="submit" class="search-btn">Search</button>
-  </form>
+        <!-- Form de recherche -->
+        <form method="GET" action="{% url 'recherche' %}" class="search-bar">
+          <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
+          <input type="text" name="q" class="search-input" placeholder="Search by name..." />
+          <button type="submit" class="search-btn">Search</button>
+        </form>
 
-  
-<form method="GET" action="{% url 'filter' %}" class="filter-form">
-    <label for="category">Filter</label>
-    <select name="category" id="category" class="form-control" onchange="this.form.submit()">
-        <option value="">All Categories</option>
+
+        <form method="GET" action="{% url 'filter' %}" class="filter-form">
+          <label for="category">Filter</label>
+          <select name="category" id="category" class="form-control" onchange="this.form.submit()">
+            <option value="">All Categories</option>
             {% for category in categories %}
-                <option value="{{ category.id }}" {% if category.id == request.GET.category %} selected {% endif %}>{{ category.name }}</option>
-              {% endfor %}
-    </select>
-</form>
+            <option value="{{ category.id }}" {% if category.id==request.GET.category %} selected {% endif %}>{{
+              category.name }}</option>
+            {% endfor %}
+          </select>
+        </form>
 
 
 
-</section>
-      
+      </section>
+
 
       <!-- Product Table -->
       <table>
@@ -215,13 +216,13 @@
       });
 
     });
-  
-  document.querySelector('filter-combobox').addEventListener('change', function() {
-    this.form.submit();  // يقدم النموذج تلقائيًا عند تغيير الفئة
-  });
+
+    document.querySelector('filter-combobox').addEventListener('change', function () {
+      this.form.submit();  // يقدم النموذج تلقائيًا عند تغيير الفئة
+    });
 
     // $('.filter-combobox').change(function () {
-    //   this.form.submit();  
+    //   this.form.submit();
     // });
 
   </script>

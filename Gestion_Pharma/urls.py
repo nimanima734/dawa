@@ -18,14 +18,13 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
-from Statistiques import views as statistiques_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Utilisateurs.urls')),
     path('',include('Produits.urls')),
     path('',include('my_notifications.urls')),
-  
-   path("homepage/statistic.html", statistiques_views.afficher_statistiques, name="statistics"),
+    path('',include('Statistiques.urls')),
   
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

@@ -9,7 +9,7 @@
 
   <title>Notification Page</title>
   <link rel="stylesheet" href="{% static 'connecter/notificationpage.css' %}">
-  
+
 </head>
 
 <body>
@@ -25,13 +25,13 @@
     <button onclick="window.location.href='{% url 'products' %}'">
       <img src="{% static 'connecter/icon2.png' %}" alt="icon"> Products
     </button>
-    <button onclick="window.location.href='statistic.html'">
+    <button onclick="window.location.href='{% url'afficher_statistiques' %}'">
       <img src="{% static 'connecter/icon5.png' %}" alt="icon"> Statistic
     </button>
-  
+
     <button onclick="window.location.href='{% url 'show_notifications' %}'" style="position: relative;">
       <img src="{% static 'connecter/icon5.png' %}" alt="icon"> Notification
-      
+
     </button>
     <button onclick="window.location.href='{% url 'about' %}'">
       <img src="{% static 'connecter/icon3.png' %}" alt="icon"> About
@@ -58,23 +58,23 @@
     </div>
 
     {% for notif in notifications %}
-      <div class="notification {% if notif.unread %}unread{% endif %}">
-        <div class="notification-text">
-          {% if notif.notification_type == 1 %}🕒{% elif notif.notification_type == 2 %}⚠️{% else %}🔔{% endif %}
-          {{ notif.text_preview }}
-        </div>
+    <div class="notification {% if notif.unread %}unread{% endif %}">
+      <div class="notification-text">
+        {% if notif.notification_type == 1 %}🕒{% elif notif.notification_type == 2 %}⚠️{% else %}🔔{% endif %}
+        {{ notif.text_preview }}
+      </div>
 
-        <div class="menu-container">
-          <button class="menu-button" onclick="toggleMenu(this)">⋮</button>
-          <div class="dropdown-menu">
-            <a href="{% url 'mark_as_read' notif.id %}">Mark as read</a>
-            <a href="{% url 'mark_as_unread' notif.id %}">Mark as unread</a>
-            <a href="{% url 'delete_notification' notif.id %}">Delete</a>
-          </div>
+      <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu(this)">⋮</button>
+        <div class="dropdown-menu">
+          <a href="{% url 'mark_as_read' notif.id %}">Mark as read</a>
+          <a href="{% url 'mark_as_unread' notif.id %}">Mark as unread</a>
+          <a href="{% url 'delete_notification' notif.id %}">Delete</a>
         </div>
       </div>
+    </div>
     {% empty %}
-      <!-- <p>No notifications found.</p> -->
+    <!-- <p>No notifications found.</p> -->
     {% endfor %}
   </div>
 
@@ -98,4 +98,3 @@
 </body>
 
 </html>
-
