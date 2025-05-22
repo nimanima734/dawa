@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pharmacy</title>
+    <link rel="stylesheet" href="{% static 'connecter/welcomepagecss.css' %}">
+    <link rel="icon" href="">
+</head>
+
+<body>
+    <div id="cont1">
+        <img id="im1" src="{% static 'connecter/1.png' %}" alt="pharmacy">
+        <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
+        <img id="im3" src="{% static 'connecter/3.png' %}" alt="pharmacy">
+        <img id="im4" src="{% static 'connecter/4.png' %}" alt="pharmacy">
+    </div>
+
+    <div id="cont2">
+        <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
+
+        <h1>
+            <span class="word1">dawa</span>
+            <span class="word2">pharma</span>
+        </h1>
+        <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
+
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="usern" id="label1">Username</label>
+                <input id="usern" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <label for="passw" id="label2">Password</label>
+                <input id="passw" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="input-group">
+                <label for="rememberMe" id="label3">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    Remember Me
+                </label>
+            </div>
+            <a id="link1" href="{% url 'verification' %}">Forgot Password?</a>
+            <button id="b1" type="submit">Sign in</button>
+            <p id="signup">
+                <span id="hh">If you don't have an account</span>
+                <span><a href="{% url 'creation' %}">Sign up</a></span>
+            </p>
+        </form>
+    </div>
+
+    <div id="verification">
+        <form method="POST" action="{% url 'verification' %}" id="emailForm">
+            {% csrf_token %}
+            <h3>Verification of your e-mail</h3>
+            <button id="close2">&times;</button>
+            <input type="email" placeholder="Email" name="email" id="emailInput">
+            <span id="emailError" style="color: red; display: none;">Please enter a valid email.</span>
+            <button type="submit" id="b2">Verify</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("close2").addEventListener("click", function () {
+                document.getElementById("verification").style.display = "none";
+            });
+
+            const form = document.getElementById("emailForm");
+            form.addEventListener("submit", function (event) {
+                const emailInput = document.getElementById("emailInput");
+                const emailError = document.getElementById("emailError");
+
+                if (emailInput.value.trim() === "") {
+                    emailError.style.display = "block";
+                    event.preventDefault();
+                } else {
+                    emailError.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

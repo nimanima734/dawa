@@ -1,0 +1,61 @@
+ body{ background-color: rgba(0,0,0,0.3);}
+ #icon-click {  
+    display: block;
+    position: fixed;
+    top: 30%;
+    left: 5%;
+    width: 1200px;
+    height: 280px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    padding-left: 30px; 
+   
+  }
+  #product-heads ,#product-row  {
+    display: flex;
+    justify-content: space-between; /* or use 'gap' for more control */
+    padding: 20px;
+    background-color: #f4f4f4;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ccc; 
+    color: rgba(16, 55, 88, 1);
+    margin-top: 20px;
+    margin-bottom: 10px;
+  } 
+  #product-heads span, #product-row span {
+    flex: 1; /* Each span will grow to fill available space and be equal in width*/
+    text-align: center;
+  }
+  #stock-message {
+    margin-top: 15px;
+    padding: 10px;
+    color: #d10909; /* warm alert tone */
+    font-size: 20px;
+    text-align: justify; 
+    font-weight: bold;
+  } 
+  button{  
+    border-radius: 50px;
+    background-color: rgba(16, 55, 88, 1);
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase; 
+    cursor: pointer; 
+    width:100px ;
+    height:50px ; 
+    border: none;
+
+} 
+#card { 
+    display: flex; 
+    gap: 400px;
+} 
+#butt{ 
+    display: flex;
+    gap: 250px; 
+    margin-top: 23px;
+}

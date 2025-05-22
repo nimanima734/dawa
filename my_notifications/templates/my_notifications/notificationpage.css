@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Amiko:wght@400;600;700&family=Amita:wght@400;700&family=Jockey+One&display=swap');
+ body{
+    padding: 0%;
+    margin: 0%; 
+    padding-left: 0%;
+ } 
+#sidebar{ 
+    width:340px;
+    height: 100vh;
+    background-color: rgb(220, 220, 220) ;
+    padding-top: 100px; 
+    border: 1px solid rgb(201, 199, 199); 
+} 
+#sidebar button{
+    display: block; 
+   background-color: rgba(255, 255, 255, 1);
+   font-family: "Jockey One", sans-serif;
+   font-size: 16px;
+   color: rgba(30, 30, 30, 1);
+   font-weight: 400;
+   width:138px ;
+   height:37px ;
+   margin:30px  120px;  
+   border: 1px solid rgba(0, 0, 0, 1); 
+   cursor: pointer; 
+   transition: background-color 0.3s ease;  
+} 
+#sidebar button:hover{ background-color: darkgray;}
+#sidebar button img{ 
+    position: absolute;
+    left: 130px;
+    width: 20px;
+    height: 20px;
+} 
+.word1{ 
+    color: rgba(16, 55, 88, 1);
+}
+.word2{ 
+    color: rgba(27, 137, 66, 1);
+} 
+#im2{
+    position: absolute;
+    width: 110px;
+    height: 110px; 
+    left: 0%;
+    top: 0%;
+}  
+small{ 
+    position: absolute;
+    top: 70px;
+    left: 123px;
+    color: rgba(120, 120, 120, 1);
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    font-style: normal;
+}
+#heading1{ 
+   position: absolute;
+    text-transform: uppercase;
+    left: 100px;
+    top: 0%;
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    margin-bottom: 0px;
+    line-height: 1;
+    border-bottom:2px solid rgba(120, 120, 120, 1);
+} 
+#heading2{
+    position: absolute;
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    top:0; 
+    left: 30%;
+}
+#block1{
+    position: absolute;
+    display: flex; /* Makes items line up in a row */
+    gap: 50px; /* Adds space between items (optional but nice) */
+    left: 30%;
+    top: 12%;
+}
+.mark{
+    width: 150px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 1);
+    text-align: center;
+    color: rgba(120, 120, 120, 1);
+    line-height: 30px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* When the div is clicked (active state), change the background color */
+.mark:active {
+    background-color: blue; 
+    color: white;
+  }
+#notificationscontainer{
+    display: block;
+    position: absolute;
+    left: 30%;
+    top: 20%;
+}
+.notification{ 
+  width: 900px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  text-align: left;
+  color: rgba(120, 120, 120, 1);
+  line-height: 50px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer; 
+  margin-bottom: 30px; 
+  display: flex;
+  justify-content: space-between; /*puts the text on the left and images on the right.*/ 
+  font-family: "Abel", sans-serif;
+  }
+  #heading3{
+    margin-bottom: 40px;
+    color: rgb(85, 84, 84); 
+    font-family: "Abel", sans-serif;
+  } 
+  .pic{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px; 
+    margin-right: 10px;
+  } 
+  #confirmationmodel{
+  display: block;
+  position: absolute;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #modal-content { 
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    width: 300px;
+    height: 120px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    padding-left: 30px; 
+   
+  }
+  #para{ 
+    margin-bottom: 30px;
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    color:rgba(16, 55, 88, 1) 
+  }
+#bb1{ 
+   display:flex;
+   gap: 100px; 
+   margin-left: 20px;
+}
+.bb1{ 
+    width: 70px;
+    height: 30px;
+    background-color:  rgba(16, 55, 88, 1);
+    text-align: center; 
+    border-radius: 30px;
+    color: white; 
+    border: none;
+} 
+#butt{
+    margin-right: 10px;
+}
+.faded {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+} 

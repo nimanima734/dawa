@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Page</title>
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Amiko:wght@400;600;700&family=Amita:wght@400;700&family=Jockey+One&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #sidebar {
+      width: 340px;
+      height: 100vh;
+      background-color: rgb(220, 220, 220);
+      padding-top: 100px;
+      border: 1px solid rgb(201, 199, 199);
+      position: fixed;
+    }
+
+    #sidebar button {
+      display: block;
+      background-color: white;
+      font-family: "Jockey One", sans-serif;
+      font-size: 16px;
+      color: #1e1e1e;
+      width: 138px;
+      height: 37px;
+      margin: 30px 120px;
+      border: 1px solid black;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+    }
+
+    #sidebar button:hover {
+      background-color: darkgray;
+    }
+
+    #sidebar button img {
+      position: absolute;
+      left: 130px;
+      width: 20px;
+      height: 20px;
+    }
+
+    #im2 {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      left: 0;
+      top: 0;
+    }
+
+    #heading1 {
+      position: absolute;
+      text-transform: uppercase;
+      left: 100px;
+      top: 0;
+      font-family: "Jockey One", sans-serif;
+      font-size: 40px;
+      line-height: 1;
+      border-bottom: 2px solid #787878;
+    }
+
+    .word1 {
+      color: #103758;
+    }
+
+    .word2 {
+      color: #1b8942;
+    }
+
+    small {
+      position: absolute;
+      top: 70px;
+      left: 123px;
+      color: #787878;
+      font-family: "Jockey One", sans-serif;
+      font-size: 16px;
+    }
+
+    #heading2 {
+      position: absolute;
+      top: 0;
+      left: 30%;
+      font-family: "Jockey One", sans-serif;
+    }
+
+    #block1 {
+      position: absolute;
+      display: flex;
+      gap: 50px;
+      left: 30%;
+      top: 12%;
+    }
+
+    .mark {
+      width: 150px;
+      height: 30px;
+      border: 1px solid black;
+      text-align: center;
+      color: #787878;
+      line-height: 30px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .mark:active {
+      background-color: blue;
+      color: white;
+    }
+
+    #notificationscontainer {
+      position: absolute;
+      left: 30%;
+      top: 20%;
+      width: 60%;
+    }
+
+    .notification {
+      width: 900px;
+      height: 50px;
+      border: 1px solid black;
+      text-align: left;
+      color: #787878;
+      line-height: 50px;
+      font-size: 16px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      font-family: "Abel", sans-serif;
+      padding: 0 10px;
+    }
+
+    #heading3 {
+      margin-bottom: 40px;
+      color: #555;
+      font-family: "Abel", sans-serif;
+    }
+
+    .pic {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    #modal-content {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 60%;
+      width: 300px;
+      height: 120px;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      padding-left: 30px;
+      z-index: 1000;
+    }
+
+    #para {
+      margin-bottom: 30px;
+      font-family: "Jockey One", sans-serif;
+      font-size: 18px;
+      color: #103758;
+    }
+
+    #bb1 {
+      display: flex;
+      gap: 100px;
+      margin-left: 20px;
+    }
+
+    .bb1 {
+      width: 70px;
+      height: 30px;
+      background-color: #103758;
+      color: white;
+      text-align: center;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .faded {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="sidebar">
+    <img id="im2" src="2.png" alt="pharmacy">
+    <h1 id="heading1"><span class="word1">dawa</span><span class="word2">pharma</span></h1>
+    <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
+    <button onclick="window.location.href='{% url 'homepage' %}'">
+      <img src="{% static 'connecter/icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page
+    </button>
+    <button onclick="window.location.href='{% url 'products' %}'">
+      <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
+    </button>
+    <button onclick="window.location.href='statistic.html'">
+      <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;statistic
+    </button>
+    <button onclick="window.location.href='{% url 'show_notifications' %}'">
+      <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
+    </button>
+    <button onclick="window.location.href='{% url 'about' %}'">
+      <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;About
+    </button>
+
+    <form method="post" action="{% url 'deconnection' %}">
+      {% csrf_token %}
+      <button type="submit">
+        <img src="{% static 'connecter/icon6.png' %}" alt="icon">&nbsp;Log out
+      </button>
+    </form>
+
+  </div>
+
+  <h1 id="heading2">Notification :</h1>
+
+  <div id="block1">
+    <select class="mark">
+      <option value="show">Show</option>
+      <option value="unread">Unread only</option>
+      <option value="read">Read only</option>
+      <option value="all">All</option>
+    </select>
+    <div class="mark">Mark all as read</div>
+    <div class="mark">Mark all as unread</div>
+    <div><img class="pic" src="bin.png" alt="delete" onclick="openModal()"></div>
+  </div>
+
+  <div id="notificationscontainer">
+    <h3 id="heading3">You have (n) new notification</h3>
+
+    <div class="notification">
+      <div class="notification-text">🔔 You have a new message.</div>
+      <div class="icons">
+        <img class="pic" src="eye.png" onclick="show(this)">
+        <img class="pic" src="eye-bar.webp" onclick="fading(this)">
+        <img class="pic" src="bin.png" onclick="openModal()">
+      </div>
+    </div>
+
+    <div class="notification">
+      <div class="notification-text">👀 Your profile was viewed 5 times today.</div>
+      <div class="icons">
+        <img class="pic" src="eye.png" onclick="show(this)">
+        <img class="pic" src="eye-bar.webp" onclick="fading(this)">
+        <img class="pic" src="bin.png" onclick="openModal()">
+      </div>
+    </div>
+
+    <div class="notification">
+      <div class="notification-text">⚠️ Don’t forget to complete your setup.</div>
+      <div class="icons">
+        <img class="pic" src="eye.png" onclick="show(this)">
+        <img class="pic" src="eye-bar.webp" onclick="fading(this)">
+        <img class="pic" src="bin.png" onclick="openModal()">
+      </div>
+    </div>
+
+    <div class="notification">
+      <div class="notification-text">✅ Your password was changed successfully.</div>
+      <div class="icons">
+        <img class="pic" src="eye.png" onclick="show(this)">
+        <img class="pic" src="eye-bar.webp" onclick="fading(this)">
+        <img class="pic" src="bin.png" onclick="openModal()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal-content">
+    <p id="para">Are you sure you want to delete notification?</p>
+    <div id="bb1">
+      <button class="bb1" onclick="confirmDelete()">Yes</button>
+      <button class="bb1" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("modal-content").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal-content").style.display = "none";
+    }
+
+    function confirmDelete() {
+      alert("Notification has been deleted!");
+      closeModal();
+    }
+
+    function fading(icon) {
+      const textDiv = icon.closest(".notification").querySelector(".notification-text");
+      textDiv.classList.add("faded");
+    }
+
+    function show(icon) {
+      const textDiv = icon.closest(".notification").querySelector(".notification-text");
+      textDiv.classList.remove("faded");
+    }
+  </script>
+
+</body>
+
+</html>

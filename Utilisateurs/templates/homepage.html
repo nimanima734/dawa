@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'connecter/homepagecss.css' %}">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img src="{% static 'connecter/img1.jpg' %}" alt="pharma" id="img1">
+    <img src="{% static 'connecter/img2.png' %}" alt="pharma" id="img2">
+    <img src="{% static 'connecter/img3.jpg' %}" alt="pharma" id="img3">
+
+    <div id="sidebar">
+
+        <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
+        <h1>
+            <span class="word1">dawa</span>
+            <span class="word2">pharma</span>
+        </h1>
+        <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
+
+        <button onclick="window.location.href='{% url 'homepage' %}'">
+            <img src="{% static 'connecter/icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page
+        </button>
+        <button onclick="window.location.href='{% url 'products' %}'">
+            <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
+        </button>
+
+        <button onclick="window.location.href='statistic.html'">
+            <img src="{% static 'connecter/icon4.png' %}" alt="icon">&nbsp;Statics
+        </button>
+        <button onclick="window.location.href='notificationpage.html'">
+            <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
+        </button>
+        <button onclick="window.location.href='about.html'">
+            <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;About
+        </button>
+        <form method="post" action="{% url 'deconnection' %}">
+            {% csrf_token %}
+            <button type="submit">
+                <img src="{% static 'connecter/icon6.png' %}" alt="icon">&nbsp;Log out
+            </button>
+        </form>
+
+
+
+    </div>
+</body>
+
+</html>

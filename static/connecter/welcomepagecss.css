@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Amiko:wght@400;600;700&family=Amita:wght@400;700&family=Jockey+One&display=swap');
+
+body {
+    background-color: rgba(237, 237, 237, 1);
+}
+
+#im1 {
+    position: absolute;
+    width: 500px;
+    height: 850px;
+    left: 400px;
+    bottom: -130px;
+}
+
+#im4 {
+    position: absolute;
+    width: 447px;
+    height: 612px;
+    left: 850px;
+
+}
+
+#im3 {
+    position: absolute;
+    width: 341px;
+    height: 470px;
+    left: 850px;
+    top: -80px;
+}
+
+#im2 {
+    position: absolute;
+    width: 138px;
+    height: 138px;
+    top: 80px;
+}
+
+h1 {
+    position: absolute;
+    top: 80px;
+    left: 130px;
+    text-transform: uppercase;
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    margin-bottom: 0px;
+    line-height: 1;
+    border-bottom: 2px solid rgba(120, 120, 120, 1);
+}
+
+.word1 {
+    color: rgba(16, 55, 88, 1);
+}
+
+.word2 {
+    color: rgba(27, 137, 66, 1);
+}
+
+small {
+    position: absolute;
+    top: 150px;
+    left: 145px;
+    color: rgba(120, 120, 120, 1);
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    font-style: normal;
+}
+
+#usern {
+    position: absolute;
+    height: 54px;
+    width: 370px;
+    top: 350px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    /* Gives a light border */
+    left: 80px;
+}
+
+#passw {
+    position: absolute;
+    height: 54px;
+    width: 370px;
+    top: 250px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    /* Gives a light border */
+    text-align: left;
+    left: 80px;
+}
+
+#b1 {
+    position: absolute;
+    height: 40px;
+    width: 370px;
+    top: 470px;
+    left: 80px;
+    border-radius: 50px;
+    background-color: rgba(16, 55, 88, 1);
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+#label1 {
+    position: absolute;
+    top: 225px;
+    left: 110px;
+    color: rgba(16, 55, 88, 1);
+}
+
+#label2 {
+    position: absolute;
+    top: 325px;
+    left: 110px;
+    color: rgba(16, 55, 88, 1);
+}
+
+#label3 {
+    position: absolute;
+    top: 430px;
+    left: 110px;
+    color: rgba(16, 55, 88, 1);
+}
+
+a {
+    text-decoration: none;
+    color: rgba(26, 128, 214, 1);
+}
+
+#link1 {
+    position: absolute;
+    top: 430px;
+    left: 310px;
+}
+
+#signup {
+    position: absolute;
+    top: 530px;
+    left: 130px;
+}
+
+#hh {
+    color: rgba(16, 55, 88, 1);
+}
+
+h3 {
+    color: rgba(16, 55, 88, 1);
+}
+
+#signUpCard {
+    display: none;
+    /* Initially hidden */
+    position: fixed;
+    /* Keeps the card fixed on the screen */
+    top: 50%;
+    /* Moves the card down to the middle */
+    left: 50%;
+    /* Moves the card to the center horizontally */
+    transform: translate(-50%, -50%);
+    /* Ensures perfect centering */
+    background: white;
+    /* Sets the card background color */
+    padding: 10px;
+    width: 370px;
+    height: 460px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* Adds a slight shadow */
+    border-radius: 8px;
+    /* Rounds the corners */
+    z-index: 1001;
+    /* Ensures the card appears above other content */
+
+}
+
+#signUpCard input {
+    width: 340px;
+    height: 35px;
+    margin: 15px 0;
+    /* Adds space between input fields */
+    padding: 10px;
+    /* Adds internal spacing */
+    border: 1px solid #ccc;
+    /* Gives a light border */
+    border-radius: 50px;
+    /* Rounds input borders */
+}
+
+#b2 {
+    width: 370px;
+    height: 45px;
+    background-color: rgba(16, 55, 88, 1);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+#effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent dark overlay */
+    display: none;
+    /* Initially hidden */
+    z-index: 1000;
+    /* Places it behind the sign-up card */
+}
+
+#close {
+    position: absolute;
+    background-color: #0000;
+    right: 0%;
+    top: 0%;
+    border: none;
+    font-size: 30px;
+}
+
+#close2 {
+    position: absolute;
+    background-color: #0000;
+    right: 0%;
+    top: 0%;
+    border: none;
+    font-size: 30px;
+}
+
+#verification input {
+    height: 35px;
+    margin: 15px 0;
+    /* Adds space between input fields */
+    padding: 10px;
+    /* Adds internal spacing */
+    border: 1px solid #ccc;
+    /* Gives a light border */
+    border-radius: 50px;
+    /* Rounds input borders */
+    width: 350px;
+    height: 40px;
+    margin-bottom: 40px;
+}
+
+#verification {
+    display: none;
+    /* Initially hidden */
+    position: fixed;
+    /* Keeps the card fixed on the screen */
+    top: 50%;
+    /* Moves the card down to the middle */
+    left: 50%;
+    /* Moves the card to the center horizontally */
+    transform: translate(-50%, -50%);
+    /* Ensures perfect centering */
+    background: white;
+    /* Sets the card background color */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* Adds a slight shadow */
+    border-radius: 8px;
+    /* Rounds the corners */
+    z-index: 1001;
+    /* Ensures the card appears above other content */
+    width: 390px;
+    height: 300px;
+    padding-left: 20px;
+}

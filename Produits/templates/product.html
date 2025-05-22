@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <link rel="stylesheet" href="{% static 'connecter/product.css' %}">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .actions a img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .actions a img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="mainc">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
+      <h1 id="heading1">
+        <span class="word1">dawa</span>
+        <span class="word2">pharma</span>
+      </h1>
+      <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
+      <button onclick="window.location.href='{% url 'homepage' %}'">
+        <img src="{% static 'connecter/icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page
+      </button>
+      <button onclick="window.location.href='{% url 'products' %}'">
+        <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
+      </button>
+      <button onclick="window.location.href='{% url 'statistic' %}'">
+        <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;Statistics
+      </button>
+      <button onclick="window.location.href='{% url 'show_notifications' %}'">
+        <img src="{% static 'connecter/icon4.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
+      </button>
+      <button onclick="window.location.href='{% url 'about' %}'">
+        <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;About
+      </button>
+      <form method="post" action="{% url 'deconnection' %}">{% csrf_token %}
+        <button type="submit">
+          <img src="{% static 'connecter/icon6.png' %}" alt="icon">&nbsp;Log out
+        </button>
+      </form>
+    </div>
+
+    <!-- Main Content -->
+    <div id="official">
+      <div id="addproduct">
+        <h1 id="heading2">Products:</h1>
+        <button id="add-product-button" onclick="window.location.href='{% url 'add' %}'">
+          <span class="add-icon">+</span>
+          <span>Add a product</span>
+        </button>
+      </div>
+
+      <!-- Search and Filter Section -->
+      <!-- <section class="search-filter-section">
+        <form method="GET" action="{% url 'recherche' %}" class="search-bar">
+          <div class="search-and-filter"> -->
+            <!-- Search by name -->
+            <!-- <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
+            <input type="text" name="q" class="search-input" placeholder="Search by name..." value="{{ request.GET.q }}" /> -->
+      
+            <!-- Dropdown for category filter -->
+            <!-- <select name="category" class="filter-combobox" onchange="this.form.submit()">
+              <option selected disabled>Choisir Catégorie</option>
+              {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == request.GET.category %} selected {% endif %}>{{ category.name }}</option>
+              {% endfor %}
+            </select> -->
+      
+            <!-- Submit button for search -->
+            <!-- <button type="submit">Search</button>
+          
+          </div>
+        </form>
+      </section> -->
+      <section class="search-filter-section">
+
+  <!-- Form de recherche -->
+  <form method="GET" action="{% url 'recherche' %}" class="search-bar">
+    <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
+    <input type="text" name="q" class="search-input" placeholder="Search by name..." />
+    <button type="submit" class="search-btn">Search</button>
+  </form>
+
+  
+<form method="GET" action="{% url 'filter' %}" class="filter-form">
+    <label for="category">Filter</label>
+    <select name="category" id="category" class="form-control" onchange="this.form.submit()">
+        <option value="">All Categories</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == request.GET.category %} selected {% endif %}>{{ category.name }}</option>
+              {% endfor %}
+    </select>
+</form>
+
+
+
+</section>
+      
+
+      <!-- Product Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Add Date</th>
+            <th>Expiry Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for n in object_list %}
+          <tr id="produit-{{ n.id }}">
+            <td>
+              {% if n.image %}
+              <img src="{{ n.image.url }}" alt="Product Image" style="width: 80px; height: auto; border-radius: 5px;" />
+              {% else %}
+              No image
+              {% endif %}
+            </td>
+
+            <td>{{ n.name }}</td>
+            <td>{{ n.category }}</td>
+            <td>{{ n.quantite }}</td>
+            <td>{{ n.price }} DA</td>
+            <td>{{ n.description }}</td>
+            <td>{{ n.date_ajout }}</td>
+            <td>{{ n.date_expiration }}</td>
+            <td class="actions">
+              <a href="{% url 'modifier' n.pk %}" title="Edit">
+                <img src="{% static 'connecter/edit.png' %}" alt="Edit">
+              </a>
+              <a href="{% url 'delete' n.pk %}" class="delete-button" data-id="{{ n.id }}" title="Delete">
+                <img class="pic" src="{% static 'connecter/bin.png' %}" alt="pic" onclick="openModal()">
+              </a>
+              <a href="{% url 'detail' n.pk %}" title="Details">
+                <img src="{% static 'connecter/info.png' %}" alt="Detail">
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="{% static 'jquery-3.7.1.min.js' %}"></script>
+  <script>
+    $(document).ready(function () {
+      $('.delete-button').on('click', function (e) {
+        e.preventDefault();
+        var produitId = $(this).data('id');
+        var url = $(this).attr('href');
+
+        if (confirm("Are you sure you want to delete this product?")) {
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+              'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function (response) {
+              if (response.success) {
+                $('#produit-' + produitId).remove();
+                alert('Product deleted successfully');
+              } else {
+                alert('Error deleting the product');
+              }
+            },
+            error: function () {
+              alert('Error occurred while deleting the product');
+            }
+          });
+        }
+      });
+
+    });
+  
+  document.querySelector('filter-combobox').addEventListener('change', function() {
+    this.form.submit();  // يقدم النموذج تلقائيًا عند تغيير الفئة
+  });
+
+    // $('.filter-combobox').change(function () {
+    //   this.form.submit();  
+    // });
+
+  </script>
+</body>
+
+</html>

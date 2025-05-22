@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Amiko:wght@400;600;700&family=Amita:wght@400;700&family=Jockey+One&display=swap');
+
+body {
+  padding: 0%;
+  margin: 0%;
+  padding-left: 0%;
+}
+
+#sidebar {
+  width: 340px;
+  height: 100vh;
+  background-color: rgb(220, 220, 220);
+  padding-top: 100px;
+  border: 1px solid rgb(201, 199, 199);
+}
+
+#sidebar button {
+  display: block;
+  background-color: rgba(255, 255, 255, 1);
+  font-family: "Jockey One", sans-serif;
+  font-size: 16px;
+  color: rgba(30, 30, 30, 1);
+  font-weight: 400;
+  width: 138px;
+  height: 37px;
+  margin: 30px 120px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#sidebar button:hover {
+  background-color: darkgray;
+}
+
+#sidebar button img {
+  position: absolute;
+  left: 130px;
+  width: 20px;
+  height: 20px;
+}
+
+.word1 {
+  color: rgba(16, 55, 88, 1);
+}
+
+.word2 {
+  color: rgba(27, 137, 66, 1);
+}
+
+#im2 {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  left: 0%;
+  top: 0%;
+}
+
+small {
+  position: absolute;
+  top: 70px;
+  left: 123px;
+  color: rgba(120, 120, 120, 1);
+  font-family: "Jockey One", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+}
+
+#heading1 {
+  position: absolute;
+  text-transform: uppercase;
+  left: 100px;
+  top: 0%;
+  font-family: "Jockey One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  margin-bottom: 0px;
+  line-height: 1;
+  border-bottom: 2px solid rgba(120, 120, 120, 1);
+}
+
+#product-heads,
+#product-row {
+  display: flex;
+  padding: 20px;
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ccc;
+  color: rgba(16, 55, 88, 1);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  gap: 43px;
+}
+
+#page {
+  display: flex;
+  gap: 13px;
+}
+
+#side {
+  display: block;
+}
+
+#heading2 {
+  text-transform: uppercase;
+  font-family: "Jockey One", sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  /* Adds space between letters */
+  font-style: normal;
+  color: rgba(16, 55, 88, 1);
+}
+
+#product-heads span,
+#product-row span {
+  flex: 1;
+  /* Each span will grow to fill available space and be equal in width*/
+  text-align: center;
+}
+
+.product-img {
+  width: 10px;
+  height: 10px;
+  object-fit: cover;
+  border-radius: 8px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#product-row span:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

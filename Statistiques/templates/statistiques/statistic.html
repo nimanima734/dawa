@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dawa Pharma Dashboard</title>
+    <link rel="stylesheet" href="{% static 'connecter/statistic.css' %}">
+
+  </head>
+  <body>
+    <div id="wissal">
+     <div id="sidebar">
+      <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
+      <h1 id="heading1">
+          <span class="word1">dawa</span>
+          <span class="word2">pharma</span>
+      </h1>
+      <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
+      <button onclick="window.location.href='{% url 'homepage' %}'"> <img src="{% static 'icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page</button>
+        <button onclick="window.location.href='{% url 'products' %}'"><img src="{% static 'icon2.png' %}" alt="icon">&nbsp;Products</button>
+        <button onclick="window.location.href='{% url 'statistics' %}'"><img src="{% static 'icon4.png' %}" alt="icon">&nbsp;Statistics</button>
+        <button onclick="window.location.href='{% url 'show_notifications' %}'"><img src="{% static 'icon5.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification</button>
+        <button onclick="window.location.href='{% url 'about' %}'"> <img src="{% static 'icon3.png' %}" alt="icon">&nbsp;About</button>
+        <button onclick="window.location.href='{% url 'deconnection' %}'"><img src="{% static 'icon6.png' %}" alt="icon">&nbsp;Log out</button>
+      </div>
+    <!-- </div> -->
+      
+        <!-- Main Content Column -->
+      <main class="main-column">
+        <div class="main-content">
+            <!-- Header Section -->
+            <section class="header-section">
+              <h2 class="page-title" id="ptitle">Statistics :</h2>
+
+            </section>
+
+
+
+            <!-- Product Table Header -->
+            <section class="product-table-header">
+              <h3 class="header-name">Name</h3>
+              <h3 class="Daily-Sales">Daily Sales Qty</h3>
+              <h3 class="Daily-Revenue">Daily Revenue</h3>
+              <h3 class="Monthly-Sales">Monthly Sales Qty</h3>
+              <h3  class="Daily-Sales">Monthly Revenue</h3>
+            </section>
+
+            
+            
+            <section class="product-table">
+              {% for stat in statistiques %}
+               <div class="product-row-item">
+                <span class="product-name">{{ stat.produit.name }}</span>
+                <span class="daily-sales">{{ stat.nbr_vente_par_jour }}</span>
+                <span class="daily-revenue">${{ stat.total_vente_jour }}</span>
+                <span class="monthly-sales">{{ stat.nbr_vente_par_mois }}</span>
+                <span class="monthly-revenue">${{ stat.total_vente_mois }}</span>
+               </div>
+              {% endfor %}
+            </section>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>  

@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Creation Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- CSS Files -->
+	<link rel="icon" type="image/png" href="{% static 'bjp/images/icons/favicon.ico' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'bjp/endor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'bjp/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+	<style>
+		body {
+			background-color: #dcdcdc;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0;
+		}
+
+		.wrap-login100 {
+			background: white;
+			padding: 40px;
+			border-radius: 15px;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+			width: 100%;
+			max-width: 450px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.login100-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.login100-form-title {
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 10px;
+		}
+
+		.wrap-input100 {
+			width: 100%;
+			position: relative;
+		}
+
+		.input100 {
+			width: 100%;
+			padding: 10px 35px;
+			font-size: 15px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+
+		.symbol-input100 {
+			position: absolute;
+			top: 50%;
+			left: 10px;
+			transform: translateY(-50%);
+			color: #888;
+		}
+
+		.login100-form-btn {
+			background-color: #0066cc;
+			border: none;
+			padding: 12px 25px;
+			font-size: 18px;
+			color: white;
+			border-radius: 30px;
+			width: 100%;
+			font-weight: bold;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.login100-form-btn:hover {
+			background-color: #005bb5;
+		}
+
+		.alert-danger {
+			color: red;
+			font-size: 14px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="wrap-login100">
+		<form class="login100-form validate-form" method="POST">
+			{% if messages %}
+			{% for message in messages %}
+			<h5 class="alert alert-danger" role="alert">
+				{{ message }}
+			</h5>
+			{% endfor %}
+			{% endif %}
+			{% csrf_token %}
+			<h3 class="login100-form-title">
+				Email Verification
+			</h3>
+
+			<div class="wrap-input100 validate-input">
+				<input class="input100" type="email" name="email" placeholder="Your email address">
+				<span class="symbol-input100">
+					<i class="fa fa-envelope" aria-hidden="true"></i>
+				</span>
+			</div>
+
+			<button class="login100-form-btn">
+				Verify
+			</button>
+		</form>
+	</div>
+
+	<!-- Scripts -->
+	<script src="{% static 'bjp/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'bjp/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'bjp/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

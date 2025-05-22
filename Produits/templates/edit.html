@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="edit.css">
+</head>
+<body> 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('fileInput');
+    const fileName = document.getElementById('fileName');
+    const cancelBtn = document.getElementById('cancelBtn');
+    
+    // Handle file selection
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files.length > 0) {
+            fileName.textContent = this.files[0].name;
+        } else {
+            fileName.textContent = 'current_image.jpg';
+        }
+    });
+    
+    // Handle cancel button
+    cancelBtn.addEventListener('click', function() {
+        if (confirm('Are you sure you want to discard changes?')) {
+            window.location.href = 'products.html';
+        }
+    });
+    
+    // Form validation
+    const form = document.getElementById('productForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const requiredFields = form.querySelectorAll('[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+            if (!field.value) {
+                field.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                field.style.borderColor = '#ddd';
+            }
+        });
+        
+        if (isValid) {
+            alert('Product updated successfully!');
+            // Submit logic here if needed
+        } else {
+            alert('Please fill all required fields!');
+        }
+    });
+});
+    </script>
+    <div class="form-container">
+        <h1>Edit Product</h1>
+        <p class="note">Please note that all fields are required</p>
+        
+        <hr>
+
+        <form id="productForm">
+            <h2 class="section-title">Pharmacy project</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Product name <span class="required">*</span></label>
+                    <input type="text" id="productName" placeholder="Enter product name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Product price <span class="required">*</span></label>
+                    <input type="number" id="productPrice" placeholder="Enter product price" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Expiration date <span class="required">*</span></label>
+                    <input type="text" id="expirationDate" placeholder="dd/mm/yyyy" required>
+                    <span class="format-hint">Format: dd/mm/yyyy</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select category <span class="required">*</span></label>
+                    <select id="productCategory" required>
+                        <option value="">- Select category -</option>
+                        <option value="prescription">Prescription Medications (Rx)</option>
+                        <option value="otc">Over-the-Counter (OTC) Medicines</option>
+                        <option value="vitamins">Vitamins & Supplements</option>
+                        <option value="personal_care">Personal Care & Hygiene</option>
+                        <option value="baby_care">Baby & Mother Care</option>
+                        <option value="devices">Medical Devices & Equipment</option>
+                        <option value="first_aid">First Aid & Emergency Supplies</option>
+                        <option value="herbal">Herbal & Natural Products</option>
+                        <option value="sexual_health">Sexual Health & Family Planning</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Product quantity <span class="required">*</span></label>
+                    <input type="number" id="productQuantity" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Product image <span class="required">*</span></label>
+                    <div class="file-upload">
+                        <input type="file" id="fileInput" class="file-input" required>
+                        <label for="fileInput" class="file-label">Change file</label>
+                        <span id="fileName" class="file-name">current_image.jpg</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Product description <span class="required">*</span></label>
+                <textarea id="productDescription" rows="3" required></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="cancelBtn" class="cancel-btn">Cancel</button>
+                <button type="submit" class="submit-btn">Update Product</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

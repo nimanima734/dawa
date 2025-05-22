@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'styleFacture.css' %}">
+  <title>Invoice Table</title>
+</head>
+
+<body>
+  <main>
+    <img src="{% static 'connecter/logo.png' %}" alt="Logo" width="10%">
+
+
+    <h2>DAWAPHARMA</h2>
+    <p><time>Date & Time: {{sale_date}}</time></p>
+
+    <table class="client">
+      <tr>
+        <th>Invoice For</th>
+        <th>Invoice Number</th>
+      </tr>
+      <tr>
+        <td>{{customer}}</td>
+        <td>{{id}}</td>
+      </tr>
+    </table>
+
+    <hr size="1">
+
+    <table class="description">
+      <tbody>
+        <tr>
+          <th>Purchased Product</th>
+          <th>Qty</th>
+          <th>Unit Price</th>
+          <th>Total Amount</th>
+        </tr>
+        <tr>
+          <td>{{produit}}</td>
+          <td>{{quantite}}</td>
+          <td>{{prix_unitaire}} da</td>
+          <td>{{total_amount}} da</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Note</td>
+          <td>Sold products are neither exchanged nor refunded</td>
+        </tr>
+        <tr>
+          <td colspan="3">For any issues, please contact the seller.</td>
+        </tr>
+        <tr>
+          <td colspan="4">{{total_amount}} da</td>
+        </tr>
+      </tfoot>
+    </table>
+  </main>
+  <button id="print-button" style="background-color: blue; color: aliceblue;">Print</button>
+</body>
+
+<script>
+  document.getElementById("print-button").addEventListener("click", function () {
+    window.print();
+  });
+</script>
+
+</html>

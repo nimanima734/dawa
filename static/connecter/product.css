@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Amiko:wght@400;600;700&family=Amita:wght@400;700&family=Jockey+One&display=swap');
+ body{
+    padding: 0%;
+    margin: 0%; 
+    padding-left: 0%;
+ } 
+#sidebar{ 
+    width:340px;
+    height: 100vh;
+    background-color: rgb(220, 220, 220) ;
+    padding-top: 100px; 
+    border: 1px solid rgb(201, 199, 199); 
+} 
+#sidebar button{
+    display: block; 
+   background-color: rgba(255, 255, 255, 1);
+   font-family: "Jockey One", sans-serif;
+   font-size: 16px;
+   color: rgba(30, 30, 30, 1);
+   font-weight: 400;
+   width:138px ;
+   height:37px ;
+   margin:30px  120px;  
+   border: 1px solid rgba(0, 0, 0, 1); 
+   cursor: pointer; 
+   transition: background-color 0.3s ease;  
+} 
+#sidebar button:hover{ background-color: darkgray;}
+#sidebar button img{ 
+    position: absolute;
+    left: 130px;
+    width: 20px;
+    height: 20px;
+} 
+.word1{ 
+    color: rgba(16, 55, 88, 1);
+}
+.word2{ 
+    color: rgba(27, 137, 66, 1);
+} 
+#im2{
+    position: absolute;
+    width: 110px;
+    height: 110px; 
+    left: 0%;
+    top: 0%;
+}  
+small{ 
+    position: absolute;
+    top: 70px;
+    left: 123px;
+    color: rgba(120, 120, 120, 1);
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    font-style: normal;
+}
+#heading1{ 
+   position: absolute;
+    text-transform: uppercase;
+    left: 100px;
+    top: 0%;
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    margin-bottom: 0px;
+    line-height: 1;
+    border-bottom:2px solid rgba(120, 120, 120, 1);
+} 
+#mainc{ 
+    display: flex; 
+    gap: 30px;
+}
+#heading2{
+    text-transform: uppercase;
+    font-family: "Jockey One", sans-serif;
+   font-weight: bold;
+   letter-spacing: 2.5px; /* Adds space between letters */
+   font-style: normal;
+   color: black;
+  } 
+  #product-heads  {
+    display: flex;
+    padding: 20px;
+    font-weight: bold; 
+    width: 900px;
+    height: 23px;
+    text-transform: uppercase;
+    border: 1.1px solid black; 
+    color: black;
+    margin-top: 120px;
+    margin-bottom: 30px; 
+    gap: 43px;
+    border-radius: 6px; 
+    margin-top: 70px;
+  } 
+  #product-heads span {
+    flex: 1; /* Each span will grow to fill available space and be equal in width*/
+    text-align: center;
+  } 
+  .icons{
+    position: absolute;
+    left: 90%;
+  }
+  #official{ display: block;}
+  .produit{  
+    width: 940px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 1);
+    text-align: left;
+    color: rgba(120, 120, 120, 1);
+    line-height: 50px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer; 
+    margin-bottom: 40px; 
+    display: flex;
+    justify-content: space-between; /*puts the text on the left and images on the right.*/ 
+    font-family: "Abel", sans-serif;
+    } 
+    .pic{
+        width: 20px;
+        height: 20px;
+        margin-left: 3px; 
+        margin-right: 3px;
+      }  
+      #add-product-button {
+        border-radius: 6px;
+        background-color: rgba(237, 237, 237, 1);
+        border: 1px solid rgba(0, 0, 0, 1);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-family: "Abel", -apple-system, Roboto, Helvetica, sans-serif;
+        font-size: 14px;
+        text-align: center;
+        cursor: pointer;
+         margin-top: 30px;
+        width: 150px;
+        height: 50px;
+      }
+      #addproduct{display: flex; 
+        justify-content: space-between;
+    }
+      
+      .add-icon {
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 6px;
+        padding: 2px 6px;
+        font-weight: bold;
+      }
+    
+      .add-product-button:hover{
+        background-color: rgb(212, 207, 207);
+        color: rgb(28, 27, 27); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        transform: scale(1.02); 
+        transition: all 0.3s ease; 
+      }
+      /* Search and filter section */
+.search-filter-section {
+    display: flex;
+    margin-top: 14px;
+    width: 100%;
+    align-items: start;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 991px) {
+    .search-filter-section {
+      max-width: 100%;
+      margin-right: 2px;
+    }
+  }
+  
+  .search-bar {
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 0, 0, 1);
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    margin-top: 5px;
+    padding: 5px 8px;
+    align-items: center;
+    gap: 32px;
+    font-family:
+      "Abel",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-size: 12px;
+    color: rgba(181, 181, 181, 1);
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  .search-icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 25px;
+    flex-shrink: 0;
+  }
+  
+  .search-input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: "Abel", -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 12px;
+      color: #333;
+      flex: 1;
+      padding: 5px 0;
+    }
+    
+    .search-input::placeholder {
+      color: rgba(181, 181, 181, 1);
+      font-weight: 400;
+  }
+  
+  /* ✅ استبدال -webkit-appearance بحل شامل لجميع المتصفحات */
+  input[type="text"] {
+      -moz-appearance: none; /* دعم فايرفوكس */
+      -ms-appearance: none; /* دعم إنترنت إكسبلورر */
+      appearance: none; /* الطريقة القياسية */
+      border: none; /* إزالة الحدود الافتراضية */
+      outline: none; /* إزالة الحدود عند التركيز */
+      background: transparent; /* الحفاظ على الخلفية شفافة */
+  }
+  
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .filter-button {
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 0, 0, 1);
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    padding: 10px 6px;
+    align-items: center;
+    gap: 5px;
+    font-family:
+      "Abel",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 1);
+    font-weight: 400;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 991px) {
+    .filter-button {
+      white-space: initial;
+    }
+  }
+  
+  .filter-button:hover{
+      transform: scale(1.02);
+  }
+  
+  .filter-icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 20px;
+    flex-shrink: 0;
+  }
+  
+  .filter-text {
+    align-self: start;
+  }
+  
+  .product-image {
+    aspect-ratio: 1.03;
+    object-fit: contain;
+    object-position: center;
+    width: 40px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  } 
+  #confirmationmodel{
+    display: block;
+    position: absolute;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+    }
+    
+    #modal-content { 
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 60%;
+      width: 300px;
+      height: 120px;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      text-align: center;
+      padding-left: 30px; 
+     
+    }
+    #para{ 
+        margin-bottom: 30px;
+        font-family: "Jockey One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 18px;
+        color:rgba(16, 55, 88, 1) 
+      }
+    #bb1{ 
+       display:flex;
+       gap: 100px; 
+       margin-left: 20px;
+    }
+    .bb1{ 
+        width: 70px;
+        height: 30px;
+        background-color:  rgba(16, 55, 88, 1);
+        text-align: center; 
+        border-radius: 30px;
+        color: white; 
+        border: none;
+    }
+    #butt{
+        margin-right: 10px;
+    }

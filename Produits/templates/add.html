@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Products</title>
+    <link rel="stylesheet" href="{% static 'connecter/add.css' %}">
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // const fileInput = document.getElementById('fileInput');
+            // const fileName = document.getElementById('fileName');
+
+            // fileInput.addEventListener('change', function (e) {
+            //     if (this.files && this.files.length > 0) {
+            //         fileName.textContent = this.files[0].name;
+            //     } else {
+            //         fileName.textContent = 'No file chosen';
+            //     }
+            // });
+
+            const form = document.getElementById('productForm');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const inputs = form.querySelectorAll('input, select, textarea');
+                let isValid = true;
+
+                inputs.forEach(input => {
+                    if (!input.value && input.hasAttribute('required')) {
+                        isValid = false;
+                        input.style.borderColor = 'red';
+                    } else {
+                        input.style.borderColor = '#ddd';
+                    }
+                });
+
+                if (isValid) {
+                    alert('Product saved successfully!');
+                    form.reset();
+                    fileName.textContent = 'No file chosen';
+                } else {
+                    alert('Please fill all required fields!');
+                }
+            });
+        });
+    </script>
+
+    <div class="form-container">
+        <h1>Add Products</h1>
+        <p class="note">Please note that<br>all fields are required</p>
+        <hr>
+
+        <form id="productForm">
+            <h2 class="section-title">Pharmacy project</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Product name <span class="required">*</span></label>
+                    <input type="text" placeholder="Enter product name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Product price <span class="required">*</span></label>
+                    <input type="number" placeholder="Enter product price" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Expiration date <span class="required">*</span></label>
+                    <input type="text" placeholder="dd/mm/yyyy" required>
+                    <span class="format-hint">Format: dd/mm/yyyy</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Select category <span class="required">*</span></label>
+                    <select required>
+                        <option value="">- Select category -</option>
+                        <option value="prescription">Prescription Medications (Rx)</option>
+                        <option value="otc">Over-the-Counter (OTC) Medicines</option>
+                        <option value="vitamins">Vitamins & Supplements</option>
+                        <option value="personal_care">Personal Care & Hygienev</option>
+                        <option value="baby_care">Baby & Mother Care</option>
+                        <option value="devices">Medical Devices & Equipment</option>
+                        <option value="first_aid">First Aid & Emergency Supplies</option>
+                        <option value="herbal">Herbal & Natural Products</option>
+                        <option value="sexual_health">Sexual Health & Family Planning</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Product quantity <span class="required">*</span></label>
+                    <input type="number" min="1" required>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label>Product image <span class="required">*</span></label>
+                    <div class="file-upload">
+                        <input type="file" id="fileInput" class="file-input" required>
+                        <label for="fileInput" class="file-label">Choose file</label>
+                        <span id="fileName" class="file-name">No file chosen</span>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="form-group">
+                <label>Product description <span class="required">*</span></label>
+                <textarea rows="3" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Save</button>
+        </form>
+    </div>
+
+    <script src="{% static 'connecter/script.js' %}"></script>
+</body>
+
+</html>

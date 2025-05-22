@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="{% static 'connecter/icon.css' %}">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    #card {
+      margin-top: 30px;
+      padding: 15px;
+      border: 1px solid #aaa;
+      background-color: #fefefe;
+      border-radius: 5px;
+    }
+
+    .purchase-btn,
+    .cancel-btn {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .purchase-btn {
+      background-color: green;
+      color: white;
+    }
+
+    .cancel-btn {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="icon-click">
+    <h2>Product Information</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Add Date</th>
+          <th>Expiry Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="produit-{{ object.id }}">
+          <td>{{ object.name }}</td>
+          <td>{{ object.category }}</td>
+          <td>{{ object.quantite }}</td>
+          <td>{{ object.price }} FCFA</td>
+          <td>{{ object.description }}</td>
+          <td>{{ object.date_ajout }}</td>
+          <td>{{ object.date_expiration }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="card">
+      <!-- <div id="stock-message">
+        The product quantity is very low.
+      </div> -->
+      <div id="butt">
+        <button class="purchase-btn" onclick="window.location.href='{% url 'ajoutvente' object.id %}'">Purchase</button>
+
+
+        <button class="cancel-btn" onclick="window.location.href='{% url 'products' %}'">Cancel</button>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("modal-content").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal-content").style.display = "none";
+    }
+
+    function confirmDelete() {
+      alert("notification has been deleted!");
+      closeModal();
+    }
+  </script>
+</body>
+
+</html>

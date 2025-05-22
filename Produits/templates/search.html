@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{% static 'connecter/search.css' %}">
+</head>
+
+<body>
+    <div id="page">
+        <div id="sidebar">
+            <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
+            <h1 id="heading1">
+                <span class="word1">dawa</span>
+                <span class="word2">pharma</span>
+            </h1>
+            <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
+            <button onclick="window.location.href='{% url 'homepage' %}'">
+                <img src="{% static 'connecter/icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page
+            </button>
+            <button onclick="window.location.href='{% url 'products' %}'">
+                <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
+            </button>
+            <button onclick="window.location.href='{% url 'statistic' %}'">
+                <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;Statistics
+            </button>
+            <button onclick="window.location.href='{% url 'show_notifications' %}'">
+                <img src="{% static 'connecter/icon4.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
+            </button>
+            <button onclick="window.location.href='{% url 'about' %}'">
+                <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;About
+            </button>
+            <form method="post" action="{% url 'deconnection' %}">{% csrf_token %}
+                <button type="submit">
+                    <img src="{% static 'connecter/icon6.png' %}" alt="icon">&nbsp;Log out
+                </button>
+            </form>
+        </div>
+        <div id="side">
+            <h1 id="heading2">Search Results</h1>
+            <div id="product-heads">
+                <span>image</span>
+                <span>Product Name</span>
+                <span>Category</span>
+                <span>Quantity</span>
+                <span>Price</span>
+                <span>Description</span>
+                <span>Add Date</span>
+                <span>Expiry Date</span>
+            </div>
+            {% if donnees %}
+            <!-- Loop through the products (donnees) -->
+            {% for produit in donnees %}
+            <div id="product-row">
+                {% if produit.image %}
+                <img src="{{ produit.image.url }}" alt="Product Image"
+                    style="width: 80px; height: auto; border-radius: 5px;" />
+                {% else %}
+                No image
+                {% endif %}
+
+
+                <span>{{ produit.name }}</span>
+                <span>{{ produit.category }}</span>
+                <span>{{ produit.quantite }}</span>
+                <span>{{ produit.price }} FCFA</span>
+                <span>{{ produit.description }}</span>
+                <span>{{ produit.date_ajout }}</span>
+                <span>{{ produit.date_expiration }}</span>
+                <span class="actions">
+                    <!-- <a href="{% url 'modifier' produit.pk %}" title="Edit">
+                      <img src="{% static 'connecter/edit.png' %}" alt="Edit">
+                    </a>
+                    <a href="{% url 'delete' produit.pk %}" class="delete-button" data-id="{{ n.id }}" title="Delete">
+                        <img class="pic" src="{% static 'connecter/bin.png' %}" alt="pic" onclick="openModal()">
+                    </a>
+                    <a href="{% url 'detail' produit.pk %}" title="Details">
+                        <img src="{% static 'connecter/info.png' %}" alt="Detail">
+                    </a> -->
+                </span>
+
+            </div>
+            {% empty %}
+            <p>No products found.</p>
+            {% endfor %}
+            {% else %}
+            <h1>No products found. </h1>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Notification Page</title>
+  <link rel="stylesheet" href="{% static 'connecter/notificationpage.css' %}">
+  
+</head>
+
+<body>
+
+  <div id="sidebar">
+    <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
+    <h1 id="heading1"><span class="word1">dawa</span><span class="word2">pharma</span></h1>
+    <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
+
+    <button onclick="window.location.href='{% url 'homepage' %}'">
+      <img src="{% static 'connecter/icon1.png' %}" alt="icon"> Home page
+    </button>
+    <button onclick="window.location.href='{% url 'products' %}'">
+      <img src="{% static 'connecter/icon2.png' %}" alt="icon"> Products
+    </button>
+    <button onclick="window.location.href='statistic.html'">
+      <img src="{% static 'connecter/icon5.png' %}" alt="icon"> Statistic
+    </button>
+  
+    <button onclick="window.location.href='{% url 'show_notifications' %}'" style="position: relative;">
+      <img src="{% static 'connecter/icon5.png' %}" alt="icon"> Notification
+      
+    </button>
+    <button onclick="window.location.href='{% url 'about' %}'">
+      <img src="{% static 'connecter/icon3.png' %}" alt="icon"> About
+    </button>
+
+    <form method="post" action="{% url 'deconnection' %}">
+      {% csrf_token %}
+      <button type="submit">
+        <img src="{% static 'connecter/icon6.png' %}" alt="icon"> Log out
+      </button>
+    </form>
+  </div>
+
+  <!-- <h1 id="heading2">Notification :</h1> -->
+
+  <div id="notificationscontainer">
+    <div id="block1">
+      <h3 id="heading3">
+        You have ({{ unread_count }}) new notification{% if unread_count > 1 %}s{% endif %}
+      </h3>
+      <div class="mark">
+        <a href="{% url 'mark_all_as_read' %}">Mark all as read</a>
+      </div>
+    </div>
+
+    {% for notif in notifications %}
+      <div class="notification {% if notif.unread %}unread{% endif %}">
+        <div class="notification-text">
+          {% if notif.notification_type == 1 %}🕒{% elif notif.notification_type == 2 %}⚠️{% else %}🔔{% endif %}
+          {{ notif.text_preview }}
+        </div>
+
+        <div class="menu-container">
+          <button class="menu-button" onclick="toggleMenu(this)">⋮</button>
+          <div class="dropdown-menu">
+            <a href="{% url 'mark_as_read' notif.id %}">Mark as read</a>
+            <a href="{% url 'mark_as_unread' notif.id %}">Mark as unread</a>
+            <a href="{% url 'delete_notification' notif.id %}">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <!-- <p>No notifications found.</p> -->
+    {% endfor %}
+  </div>
+
+  <script>
+    function toggleMenu(button) {
+      const menu = button.nextElementSibling;
+      document.querySelectorAll(".dropdown-menu").forEach(m => {
+        if (m !== menu) m.style.display = "none";
+      });
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    window.addEventListener("click", function (e) {
+      if (!e.target.matches(".menu-button")) {
+        document.querySelectorAll(".dropdown-menu").forEach(menu => {
+          menu.style.display = "none";
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
+

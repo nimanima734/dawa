@@ -1,0 +1,161 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(245, 245, 245);
+    margin: 0;
+    padding: 20px;
+    color: rgb(51, 51, 51);
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: rgb(8, 51, 130);
+    font-size: 24px;
+    margin-bottom: 5px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.note {
+    color: rgb(8, 51, 130);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgb(238, 238, 238);
+    margin: 20px 0;
+}
+
+.section-title {
+    font-size: 18px;
+    color: rgb(68, 68, 68);
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.required {
+    color: rgb(255, 0, 0);
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: rgb(8, 51, 130);
+    box-shadow: 0 0 0 2px rgba(8, 51, 130, 0.2);
+    outline: none;
+}
+
+.format-hint {
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+    display: block;
+    margin-top: 5px;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-label {
+    padding: 6px 12px;
+    background: rgb(8, 51, 130);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.file-label:hover {
+    background: rgb(10, 59, 143);
+    transform: translateY(-1px);
+}
+
+.file-input {
+    display: none;
+}
+
+.file-name {
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    transition: color 0.3s ease;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(8, 51, 130);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: rgb(10, 59, 143);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(8, 51, 130, 0.3);
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
