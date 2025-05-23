@@ -224,13 +224,14 @@
           <input type="text" name="q" class="search-input" placeholder="Search by name..." />
         </form>
         
-        <form method="GET" action="{% url 'filter' %}" class="filter-form">
+        
         <div class="filter-controls">
           <button class="filter-button" id="filter-button">
             <img src="{% static 'connecter/filter.png' %}" alt="Filter" class="filter-icon" />
             <span class="filter-text">Filter</span>
           </button>
 
+          <form method="GET" action="{% url 'filter' %}" class="filter-form">
           <!-- Category Filter Dropdown (Initially Hidden) -->
           <select id="filter-category-select" name="category" class="filter-category-select">
            <option value="">All Categories</option>
