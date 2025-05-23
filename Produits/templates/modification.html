@@ -1,28 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajout des données</title>
+    <title>Modify</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/style1.css' %}">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-</head>
-<body>
+    <style>
+    .butt { 
+        background-color: rgba(16,55,88,1);
+        color: white;
+    } 
+     #b2{ 
+          position: absolute; 
+      left: 50%; 
+      margin-right:80px ;
+      } 
+      .blue-text{ 
+        color: rgb(206, 5, 5);
+      }
 
+    </style>
+</head>
 
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-                <h3>Modification des produits</h3>
-                <p class="blue-text">Veuillez noter que <br> tout les champs sont obligatoire</p>
+                <h3> Modify Product</h3>
+                <p class="blue-text">Please All Fields Are Required</p>
                 <div class="card">
-                    <h5 class="text-center mb-4">Pharmacie projet</h5>
                         <form class="form-card" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
 
@@ -35,7 +45,7 @@
                         {% endif %}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                 <label class="form-control-label px-3">Le nom du produit<span class="text-danger"> *</span></label> 
+                                 <label class="form-control-label px-3">Product Name<span class="text-danger"> *</span></label> 
                                
                                  {{form.name}}
 
@@ -47,7 +57,7 @@
                              {% endif %}
 
                                  </div>
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Selectionné la categorie<span class="text-danger"> *</span></label>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Select The Category <span class="text-danger"> *</span></label>
 
 
                                 {{form.category}}
@@ -71,7 +81,7 @@
                         
 
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Le prix du produit<span class="text-danger"> *</span></label> 
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product Price<span class="text-danger"> *</span></label> 
                                 
                                 {{form.price}}
 
@@ -82,7 +92,7 @@
                                 <div class="error" style="color: red;">{{ errors.price }}</div>
                             {% endif %}
                             </div>
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">La quantité de produit<span class="text-danger"> *</span></label>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product Quantity<span class="text-danger"> *</span></label>
                             
                                 {{form.quantite}}
 
@@ -94,7 +104,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Date expiration<span class="text-danger"> *</span></label>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3"> Expiry Date<span class="text-danger"> *</span></label>
                                
                                 {{form.date_expiration}}
 
@@ -105,7 +115,7 @@
                                 <div class="error" style="color: red;">{{ errors.date_expiration }}</div>
                             {% endif %}
                             </div>
-                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Image du produit<span class="text-danger"> *</span></label> 
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product Image<span class="text-danger"> *</span></label> 
                                 {% comment %} <input type="file" id="image" name="image" onblur="validate(5)" required>   {% endcomment %}
                             
                                 {% if errors.image %}
@@ -117,7 +127,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">La description du produit <span class="text-danger"> *</span></label>
+                            <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Product Description<span class="text-danger"> *</span></label>
                                 {{form.description}}
 
                                 <div class="text-danger">{{form.description.errors}} </div>
@@ -131,7 +141,10 @@
                         <br>
                         <div class="row justify-content-end">
                             <div class="form-group col-sm-6">
-                                <input type="submit" class="btn-block btn-primary" value="Enregistrer">
+                                <input type="submit"   id="b1"  class="butt" class="btn-block btn-primary" value="Save Change">
+                                <a href="{% url 'products'}"> 
+                                    <button class="butt" id="b2"> Go Back</button>
+                                </a>
                                 <!-- <button type="" ></button> </div> -->
                         </div>
                     </form>
