@@ -4,7 +4,8 @@ from django.http import HttpResponseForbidden
 # هنا تحط قائمة عناوين الـ IP المسموح بها
 ALLOWED_IPS = [
     '192.168.8.114',   # مثال IP داخلي
-    '154.255.40.171',   # مثال IP خارجي
+    '154.255.40.171',
+    # مثال IP خارجي
 ]
 
 class RestrictIPMiddleware:
