@@ -225,7 +225,7 @@
         </form>
         
         
-        <form method="GET" action="{% url 'filter' %}" class="filter-form">
+       <form method="GET" action="{% url 'filter' %}" class="filter-form">
   <div class="filter-controls">
     <button type="submit" class="filter-button" id="filter-button">
       <img src="{% static 'connecter/filter.png' %}" alt="Filter" class="filter-icon" />
@@ -243,6 +243,9 @@
     </select>
   </div>
 </form>
+
+
+
 
       </section>
 
@@ -325,7 +328,7 @@
         }
       });
     });
-      document.querySelector('filter-combobox').addEventListener('change', function() {
+      document.querySelector('#filter-category-select').addEventListener('change', function() {
     this.form.submit();  // يقدم النموذج تلقائيًا عند تغيير الفئة
   });
 
