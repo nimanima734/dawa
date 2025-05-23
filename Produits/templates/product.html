@@ -225,10 +225,13 @@
     <div id="official">
       <div id="addproduct">
         <h1 id="heading2">Products:</h1>
+        {% if user.is_superuser %}
         <button id="add-product-button" onclick="window.location.href='{% url 'add' %}'">
           <span class="add-icon">+</span>
           <span>Add a product</span>
         </button>
+        {% endif %}
+
       </div>
 
       <section class="search-filter-section">
