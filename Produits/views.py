@@ -202,7 +202,7 @@ def VenteProduits(request, id):
                 # Enregistrement de la vente
                 sale = Vente(produit=produit, quantite=quantite, total_amount=total_amount, customer=customer)
                 sale.save()
-
+                generer_statistiques(request)
                 # Mise à jour de la quantité de vente dans le produit
                 produit.quantite -= quantite
                 produit.save()
