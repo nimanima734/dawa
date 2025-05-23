@@ -26,4 +26,4 @@ def generer_statistiques(request):
 
 def afficher_statistiques(request):
     stats = StatistiqueProduit.objects.filter(date=date.today())
-    return render(request, "Statistiques/statistic.html", {"statistiques": stats})
+    return render(request, "statistiques/statistic.html", {"statistiques": stats})
