@@ -293,13 +293,19 @@
         <div class="product-description">{{ n.description }}</div>
         <div class="product-added">{{ n.date_ajout }}</div>
         <div class="product-expiry">{{ n.date_expiration }}</div>
-        <div class="actions">
+         <div class="actions">
+          {% if user.is_superuser %}
           <a href="{% url 'modifier' n.pk %}" title="Edit">
             <img src="{% static 'connecter/edit.png' %}" alt="Edit">
           </a>
+          {% endif %}
+
+          {% if user.is_superuser %}
           <a href="{% url 'delete' n.pk %}" class="delete-button" data-id="{{ n.id }}" title="Delete">
             <img src="{% static 'connecter/bin.png' %}" alt="Delete">
           </a>
+          {% endif %}
+
           <a href="{% url 'detail' n.pk %}" title="Details">
             <img src="{% static 'connecter/info.png' %}" alt="Detail">
           </a>
