@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Produits',
-    'django_extensions',
     'Utilisateurs',
     'my_notifications',
     'Statistiques',
