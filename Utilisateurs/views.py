@@ -163,3 +163,28 @@ def Changement_Code(request, email):
 def Deconnection(request):
     logout(request)
     return redirect("login") 
+def users_view(request):
+    # نجيب كل المستخدمين النشطين (active=True)
+    users = User.objects.filter(is_active=True)
+    return render(request, 'users.html', {'users': users})
+
+# فحص واش المستخدم أدمين
+def is_admin(user):
+    return user.is_superuser
+
+@user_passes_test(is_admin)
+def create_admin_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists.")
+        else:
+            # إنشاء مستخدم أدمين جديد
+            User.objects.create_superuser(username=username, email=email, password=password)
+            messages.success(request, "New admin created successfully.")
+            return redirect('users')  # رجوع لقائمة المستخدمين
+    
+    return render(request, 'create_admin.html')
