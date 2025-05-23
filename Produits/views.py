@@ -10,7 +10,7 @@ from django.contrib import messages
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
-
+from Statistiques.views import generer_statistiques
 from my_notifications.views import check_for_notifications 
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
