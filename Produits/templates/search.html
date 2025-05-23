@@ -25,14 +25,14 @@
             <button onclick="window.location.href='{% url 'products' %}'">
                 <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
             </button>
-            <button onclick="window.location.href='{% url 'afficher_statistiques' %}'">
-                <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;Statistics
+            <button onclick="window.location.href='statistic.html'">
+                <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Statistics
             </button>
             <button onclick="window.location.href='{% url 'show_notifications' %}'">
                 <img src="{% static 'connecter/icon4.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
             </button>
             <button onclick="window.location.href='{% url 'about' %}'">
-                <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;About
+                <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;About
             </button>
             <form method="post" action="{% url 'deconnection' %}">{% csrf_token %}
                 <button type="submit">
@@ -42,6 +42,7 @@
         </div>
         <div id="side">
             <h1 id="heading2">Search Results</h1>
+            {% if donnees %}
             <div id="product-heads">
                 <span>image</span>
                 <span>Product Name</span>
@@ -52,7 +53,6 @@
                 <span>Add Date</span>
                 <span>Expiry Date</span>
             </div>
-            {% if donnees %}
             <!-- Loop through the products (donnees) -->
             {% for produit in donnees %}
             <div id="product-row">
@@ -88,7 +88,7 @@
             <p>No products found.</p>
             {% endfor %}
             {% else %}
-            <h1>No products found. </h1>
+            <h1>No Result found</h1>
             {% endif %}
         </div>
     </div>
