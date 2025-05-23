@@ -107,3 +107,64 @@ h1 {
     left: 900px;
     border-radius: 20px;
 }
+#sidebar .dropdown {
+  position: relative;
+  display: block;
+  margin: 30px auto;
+  /* ✅ وسط بحال الأزرار */
+  width: fit-content;
+}
+
+
+#sidebar .dropbtn {
+  width: 138px;
+  height: 37px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 1);
+  color: rgba(30, 30, 30, 1);
+  font-family: "Jockey One", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#sidebar .dropbtn:hover {
+  transform: scale(1.05);
+}
+
+#sidebar .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: white;
+  min-width: 138px;
+  border: 1px solid #ccc;
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+#sidebar .dropdown-content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  font-family: "Jockey One", sans-serif;
+  font-size: 15px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+#sidebar .dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+#sidebar .dropdown-content a:hover {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+#sidebar .dropdown:hover .dropdown-content {
+  display: block;
+}
