@@ -7,45 +7,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products</title>
   <link rel="stylesheet" href="{% static 'connecter/product.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
   <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    .product-header,
+    .product-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1000px;
+      width: 90%;
+      margin: 10px auto;
+    }
+    .product-header {
+      font-family: "Abel", -apple-system, Roboto, Helvetica, sans-serif;
+      font-weight: bold;
+      background-color: #dcdcdc;
+      height: 1cm;
+      border-radius: 10px;
     }
 
-    table,
-    th,
-    td {
-      border: 1px solid #ddd;
+    .product-strip {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      height: 3cm;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    th,
-    td {
-      padding: 10px;
-      text-align: left;
+    .product-strip div,
+    .product-header div {
+      flex: 1;
+      text-align: center;
+      padding: 0 5px;
+      font-size: 14px;
     }
 
-    th {
-      background-color: #f2f2f2;
+    .product-image img {
+      width: 2cm;
+      height: 2cm;
+      object-fit: contain;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background-color: #fff;
     }
 
-    .actions a img {
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
-      cursor: pointer;
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .actions a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #000;
+      background-color: #fff;
+      border-radius: 5px;
       transition: transform 0.2s;
     }
 
-    .actions a img:hover {
+    .actions a:hover {
       transform: scale(1.1);
     }
+
+    .actions img {
+      width: 18px;
+      height: 18px;
+    }
+
+    #official {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    #add-product-button {
+      background-color: #d2d2d2;
+      color: rgb(0, 0, 0);
+      width: 150px;
+      height: 50px;
+      border: 1px solid black;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 200;
+      font-family: "Abel", -apple-system, Roboto, Helvetica, sans-serif;
+    }
+
+    #add-product-button .add-icon {
+      font-size: 16px;
+      font-weight: 400;
+      margin-right: 5px;
+      width: 15px;
+      height: 20px;
+    }
+
+    #add-product-button:hover {
+      transform: scale(1.03);
+    }
+
+    .search-filter-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .search-icon {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    .filter-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-button {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      font-family: "Abel", -apple-system, Roboto, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+
+    .filter-icon {
+      width: 20px;
+      margin-right: 5px;
+    }
+
+    .filter-category-select {
+      display: none;
+      padding: 8px;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      font-family: "Abel", -apple-system, Roboto, Helvetica, sans-serif;
+      height: 38px;
+      width: 200px;
+    }
+
+    .product-image,
+    .product-name,
+    .product-category,
+    .product-quantity,
+    .product-price,
+    .product-description,
+    .product-added,
+    .product-expiry,
+    .actions {
+      flex: 1;
+    }
+
   </style>
 </head>
 
 <body>
   <div id="mainc">
-    <!-- Sidebar -->
     <div id="sidebar">
       <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
       <h1 id="heading1">
@@ -53,20 +187,20 @@
         <span class="word2">pharma</span>
       </h1>
       <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
-      <button onclick="window.location.href='{% url 'homepage' %}'">
+      <button type="button" onclick="window.location.href='{% url 'homepage' %}'">
         <img src="{% static 'connecter/icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page
       </button>
-      <button onclick="window.location.href='{% url 'products' %}'">
+      <button type="button" onclick="window.location.href='{% url 'products' %}'">
         <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
       </button>
-      <button onclick="window.location.href='{% url 'afficher_statistiques' %}'">
-        <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;Statistics
+      <button type="button" onclick="window.location.href='statistic.html'">
+        <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;statistic
       </button>
-      <button onclick="window.location.href='{% url 'show_notifications' %}'">
+      <button type="button" onclick="window.location.href='{% url 'show_notifications' %}'">
         <img src="{% static 'connecter/icon4.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
       </button>
-      <button onclick="window.location.href='{% url 'about' %}'">
-        <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;About
+      <button type="button" onclick="window.location.href='{% url 'about' %}'">
+        <img src="{% static 'connecter/icon5.png' %} " alt="icon">&nbsp;About
       </button>
       <form method="post" action="{% url 'deconnection' %}">{% csrf_token %}
         <button type="submit">
@@ -75,7 +209,6 @@
       </form>
     </div>
 
-    <!-- Main Content -->
     <div id="official">
       <div id="addproduct">
         <h1 id="heading2">Products:</h1>
@@ -85,111 +218,86 @@
         </button>
       </div>
 
-      <!-- Search and Filter Section -->
-      <!-- <section class="search-filter-section">
-        <form method="GET" action="{% url 'recherche' %}" class="search-bar">
-          <div class="search-and-filter"> -->
-      <!-- Search by name -->
-      <!-- <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
-            <input type="text" name="q" class="search-input" placeholder="Search by name..." value="{{ request.GET.q }}" /> -->
-
-      <!-- Dropdown for category filter -->
-      <!-- <select name="category" class="filter-combobox" onchange="this.form.submit()">
-              <option selected disabled>Choisir Catégorie</option>
-              {% for category in categories %}
-                <option value="{{ category.id }}" {% if category.id == request.GET.category %} selected {% endif %}>{{ category.name }}</option>
-              {% endfor %}
-            </select> -->
-
-      <!-- Submit button for search -->
-      <!-- <button type="submit">Search</button>
-          
-          </div>
-        </form>
-      </section> -->
       <section class="search-filter-section">
-
-        <!-- Form de recherche -->
         <form method="GET" action="{% url 'recherche' %}" class="search-bar">
           <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
           <input type="text" name="q" class="search-input" placeholder="Search by name..." />
-          <button type="submit" class="search-btn">Search</button>
         </form>
 
+        <div class="filter-controls">
+          <button class="filter-button" id="filter-button">
+            <img src="{% static 'connecter/filter.png' %}" alt="Filter" class="filter-icon" />
+            <span class="filter-text">Filter</span>
+          </button>
 
-        <form method="GET" action="{% url 'filter' %}" class="filter-form">
-          <label for="category">Filter</label>
-          <select name="category" id="category" class="form-control" onchange="this.form.submit()">
-            <option value="">All Categories</option>
-            {% for category in categories %}
-           <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %} selected {% endif %}>
-          {{ category.name }}
-           </option>
-
-            {% endfor %}
+          <!-- Category Filter Dropdown (Initially Hidden) -->
+          <select id="filter-category-select" name="category" class="filter-category-select">
+            <option value="">Select Category</option>
+            <option value="prescription">Prescription Medications (Rx)</option>
+            <option value="otc">Over-the-Counter (OTC) Medicines</option>
+            <option value="vitamins">Vitamins & Supplements</option>
+            <option value="personal">Personal Care & Hygiene</option>
+            <option value="baby">Baby & Mother Care</option>
+            <option value="devices">Medical Devices & Equipment</option>
+            <option value="firstaid">First Aid & Emergency Supplies</option>
+            <option value="herbal">Herbal & Natural Products</option>
+            <option value="health">Sexual Health & Family Planning</option>
           </select>
-        </form>
-
-
-
+        </div>
       </section>
 
+      <div class="product-header">
+        <div>Image</div>
+        <div>Name</div>
+        <div>Category</div>
+        <div>Quantity</div>
+        <div>Price</div>
+        <div>Description</div>
+        <div>Entry Date</div>
+        <div>Expiration Date</div>
+        <div>Actions</div>
+      </div>
 
-      <!-- Product Table -->
-      <table>
-        <thead>
-          <tr>
-            <th>image</th>
-            <th>Product Name</th>
-            <th>Category</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Add Date</th>
-            <th>Expiry Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for n in object_list %}
-          <tr id="produit-{{ n.id }}">
-            <td>
-              {% if n.image %}
-              <img src="{{ n.image.url }}" alt="Product Image" style="width: 80px; height: auto; border-radius: 5px;" />
-              {% else %}
-              No image
-              {% endif %}
-            </td>
-
-            <td>{{ n.name }}</td>
-            <td>{{ n.category }}</td>
-            <td>{{ n.quantite }}</td>
-            <td>{{ n.price }} DA</td>
-            <td>{{ n.description }}</td>
-            <td>{{ n.date_ajout }}</td>
-            <td>{{ n.date_expiration }}</td>
-            <td class="actions">
-              <a href="{% url 'modifier' n.pk %}" title="Edit">
-                <img src="{% static 'connecter/edit.png' %}" alt="Edit">
-              </a>
-              <a href="{% url 'delete' n.pk %}" class="delete-button" data-id="{{ n.id }}" title="Delete">
-                <img class="pic" src="{% static 'connecter/bin.png' %}" alt="pic" onclick="openModal()">
-              </a>
-              <a href="{% url 'detail' n.pk %}" title="Details">
-                <img src="{% static 'connecter/info.png' %}" alt="Detail">
-              </a>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      {% for n in object_list %}
+      <div class="product-strip" data-id="{{ n.id }}">
+        <div class="product-image">
+          {% if n.image %}
+          <img src="{{ n.image.url }}" alt="Product Image" />
+          {% else %}
+          No image
+          {% endif %}
+        </div>
+        <div class="product-name">{{ n.name }}</div>
+        <div class="product-category">{{ n.category }}</div>
+        <div class="product-quantity">{{ n.statut_quantite }}</div>
+        <div class="product-price">{{ n.price }} FCFA</div>
+        <div class="product-description">{{ n.description }}</div>
+        <div class="product-added">{{ n.date_ajout }}</div>
+        <div class="product-expiry">{{ n.date_expiration }}</div>
+        <div class="actions">
+          <a href="{% url 'modifier' n.pk %}" title="Edit">
+            <img src="{% static 'connecter/edit.png' %}" alt="Edit">
+          </a>
+          <a href="{% url 'delete' n.pk %}" class="delete-button" data-id="{{ n.id }}" title="Delete">
+            <img src="{% static 'connecter/bin.png' %}" alt="Delete">
+          </a>
+          <a href="{% url 'detail' n.pk %}" title="Details">
+            <img src="{% static 'connecter/info.png' %}" alt="Detail">
+          </a>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script src="{% static 'jquery-3.7.1.min.js' %}"></script>
   <script>
     $(document).ready(function () {
+      // Toggle category dropdown visibility on filter button click
+      $('#filter-button').click(function () {
+        $('#filter-category-select').toggle();
+      });
+
       $('.delete-button').on('click', function (e) {
         e.preventDefault();
         var produitId = $(this).data('id');
@@ -204,29 +312,19 @@
             },
             success: function (response) {
               if (response.success) {
-                $('#produit-' + produitId).remove();
+                $('[data-id="' + produitId + '"]').remove();
                 alert('Product deleted successfully');
               } else {
                 alert('Error deleting the product');
               }
             },
             error: function () {
-              alert('Error occurred while deleting the product');
+              alert('An error occurred');
             }
           });
         }
       });
-
     });
-
-    document.querySelector('filter-combobox').addEventListener('change', function () {
-      this.form.submit();  // يقدم النموذج تلقائيًا عند تغيير الفئة
-    });
-
-    // $('.filter-combobox').change(function () {
-    //   this.form.submit();
-    // });
-
   </script>
 </body>
 
