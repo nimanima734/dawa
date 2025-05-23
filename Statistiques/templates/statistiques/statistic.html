@@ -17,12 +17,25 @@
           <span class="word2">pharma</span>
       </h1>
       <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
-      <button onclick="window.location.href='{% url 'homepage' %}'"> <img src="{% static 'icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page</button>
-        <button onclick="window.location.href='{% url 'products' %}'"><img src="{% static 'icon2.png' %}" alt="icon">&nbsp;Products</button>
-        <button onclick="window.location.href='{% url 'afficher_statistiques' %}'"><img src="{% static 'icon4.png' %}" alt="icon">&nbsp;Statistics</button>
-        <button onclick="window.location.href='{% url 'show_notifications' %}'"><img src="{% static 'icon5.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification</button>
-        <button onclick="window.location.href='{% url 'about' %}'"> <img src="{% static 'icon3.png' %}" alt="icon">&nbsp;About</button>
-        <button onclick="window.location.href='{% url 'deconnection' %}'"><img src="{% static 'icon6.png' %}" alt="icon">&nbsp;Log out</button>
+      <button onclick="window.location.href='{% url 'homepage' %}'">
+            <img src="{% static 'connecter/icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page
+        </button>
+        <button onclick="window.location.href='{% url 'products' %}'">
+            <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
+        </button>
+        <button onclick="window.location.href='{% url 'afficher_statistiques' %}'">
+            <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;&nbsp;Statistics
+        </button>
+        <button onclick="window.location.href='{% url 'show_notifications' %}'">
+            <img src="{% static 'connecter/icon4.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
+        </button>
+        <button onclick="window.location.href='{% url 'about' %}'">
+            <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;About
+        </button>
+        <form method="post" action="{% url 'deconnection' %}">{% csrf_token %}
+            <button type="submit">
+                <img src="{% static 'connecter/icon6.png' %}" alt="icon">&nbsp;Log out
+            </button>
       </div>
     <!-- </div> -->
       
