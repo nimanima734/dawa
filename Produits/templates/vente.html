@@ -1,33 +1,126 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Sale</title>
-    <link rel="stylesheet" href="vente.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sale</title> 
+  <style>
+    body{
+    background-color: #b1afaf;
+}
+#page{
+  position: absolute;
+  width:500px ;
+  height: 500px;
+background-color: #fff; 
+top: 10%;
+left: 30%;
+padding-left: 40px;
+}
+.blue-text{
+    color: red;
+}
+#puts input{ 
+  display: block;
+  width: 460px;
+  height: 50px;
+  border-radius: 30px;
+  border-color: rgb(236, 230, 230) 0.5px;
+  margin-top: 80px;
+
+}
+#butt{ background-color:  rgba(16, 55, 88, 1);
+  position: absolute;
+  top: 83%;
+  color: white;
+  width: 220px;
+  height: 45px; 
+  border-radius: 30px;
+  cursor: pointer;
+}
+h3{ 
+  font-size: 25px;
+  color:  rgba(16, 55, 88, 1);
+
+} 
+#quant{
+  position: absolute;
+  top: 55%;
+  color:  rgba(16, 55, 88, 1);
+}
+#name{
+  position: absolute;
+  top: 30%;
+  color:  rgba(16, 55, 88, 1);
+}
+  </style>
 </head>
+
 <body>
-    <div class="form-container">
+  <div id="page">
+  <div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
         <h3>Product Sale</h3>
-        <p class="note">Please note<br>All fields are required</p>
-        
-        <form method="post">
-            <div class="fields-container">
-                <div class="field-group">
-                    <label>Customer Name <span class="required">*</span></label>
-                    <input type="text" required>
-                </div>
-                <div class="field-group">
-                    <label>Quantity <span class="required">*</span></label>
-                    <input type="number" required>
-                </div>
+        <p class="blue-text">Please note that all fields are required
+          <a href="{% url 'products' %}">
+            <button type="submit" class="btn btn-primary" id="butt">Go Back</button>
+          </a>
+        </p>
+        <div class="card">
+          {% if message %}
+          <p style="color: red;">{{ message }}</p>
+          {% endif %}
+
+          {% comment %} <h5 class="text-center mb-4">Powering world-class companies</h5> {% endcomment %}
+          <form class="form-card" method="post">
+            {% csrf_token %}
+            <div id="puts" >
+            <div class="row justify-content-between text-left"> 
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3" id="name">Client Name<span class="text-danger"> *</span></label>
+                {{form.customer}}
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3" id="quant">Quantity<span class="text-danger"> *</span></label>
+                {{form.quantite}}
+              </div>
             </div>
-            
-            <div class="buttons-container">
-                <a href="/" class="btn">Back</a>
-                <button type="submit" class="btn btn-submit">COMPLETE SALE</button>
+             </div>
+            {% comment %} <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Montant de la vente<span class="text-danger"> *</span></label>
+                {{form.montant_obtenue}}
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Nom du client<span class="text-danger"> *</span></label>
+                {{form.delivre_A}}
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Nom prix unitaire<span class="text-danger"> *</span></label>
+                {{form.prix_unitaire}} {% endcomment %}
+              </div>
             </div>
-        </form>
+
+            <div class="row justify-content-end">
+              <div class="form-group col-sm-6">
+                <button type="submit" class="btn-block btn-primary" id="butt">COMPLETE SALE</button>
+              </div>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
     </div>
+  </div>
+  </div>
+  <script src="{% static 'js/js.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bunbke.js' %}"></script>
 </body>
+
 </html>
