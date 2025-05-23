@@ -232,16 +232,10 @@
 
           <!-- Category Filter Dropdown (Initially Hidden) -->
           <select id="filter-category-select" name="category" class="filter-category-select">
-            <option value="">Select Category</option>
-            <option value="prescription">Prescription Medications (Rx)</option>
-            <option value="otc">Over-the-Counter (OTC) Medicines</option>
-            <option value="vitamins">Vitamins & Supplements</option>
-            <option value="personal">Personal Care & Hygiene</option>
-            <option value="baby">Baby & Mother Care</option>
-            <option value="devices">Medical Devices & Equipment</option>
-            <option value="firstaid">First Aid & Emergency Supplies</option>
-            <option value="herbal">Herbal & Natural Products</option>
-            <option value="health">Sexual Health & Family Planning</option>
+           <option value="">All Categories</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == request.GET.category %} selected {% endif %}>{{ category.name }}</option>
+              {% endfor %}
           </select>
         </div>
       </section>
@@ -325,6 +319,10 @@
         }
       });
     });
+      document.querySelector('filter-combobox').addEventListener('change', function() {
+    this.form.submit();  // يقدم النموذج تلقائيًا عند تغيير الفئة
+  });
+
   </script>
 </body>
 
