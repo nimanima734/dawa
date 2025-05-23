@@ -9,60 +9,69 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+import random
+from django.core.mail import send_mail
+
 @login_required(login_url='login')
 def HomePageView(request):
     return render(request, 'homepage.html')
 
 
+def send_verification_code(email, request):
+    code = str(random.randint(1000, 9999))
+    request.session['reset_code'] = code
+    request.session['reset_email'] = email
+    
+    send_mail(
+        subject='Dawa Pharma email confirmation',
+        message=f'Your confirmation code is: {code}',
+        from_email='Dawa Pharma <dawapharma91@gmail.com>',
+        recipient_list=[email],
+    )
 # fonction pour créer un compte 
 
 def Creation_Compte(request):
-
-    if request.method ==  "POST":
+    if request.method == "POST":
 
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         password_confirm = request.POST['password_confirm']
 
-        # verification des mots de passe
-
         if password != password_confirm:
             messages.error(request, "Les mots de passe ne sont pas identiques. veuillez réessayer.")
-            return redirect ("creation")
-
-        # verification de la longeur et des caractères du mot de passe  
+            return redirect("creation")
 
         if len(password) < 8 or not re.search(r'[A-Za-z]', password) or not re.search(r'\d', password) or not re.search(r'[^\w\s]', password):
             messages.error(request, 'Le mot de passse doit contenir au moins 8 caractères, incluant des lettres, des chiffres et des caractères spéciaux.')
             return redirect("creation")
-        
-        # verification du format de l'adresse mail
 
         try:
             validate_email(email)
         except ValidationError:
             messages.error(request, "L'adresse e-mail invalide. Veuillez réessayer.")
             return redirect("creation")
-        
-        # verification de l'existence de l'utilisateur et de l'adresse mail
-        
+
         if User.objects.filter(username=username).exists():
             messages.error(request, "Ce nom d'utilisateur existe déjà. Veuillez réessayer.")
             return redirect("creation")
-        
+
         if User.objects.filter(email=email).exists():
             messages.error(request, "Cette adresse e-mail est déjà utilisée. Veuullez en choisir une autre.")
             return redirect("creation")
-        
-        # création de l'utilisateur
 
-        User.objects.create_user(username=username, email=email, password=password)
-       
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.is_active = False
+        user.save()
 
-        return redirect('login')
-    
+        request.session['verification_type'] = 'activation'
+        send_verification_code(email, request)
+
+      
+        return redirect("verifier_code")
+
     return render(request, "creation.html")
+
 
 
 # fonction pour se connecter
@@ -92,20 +101,22 @@ def Verification_Mail(request):
     if request.method == "POST":
         email = request.POST.get('email')
 
-        # verification si l'email 
         if not email:
             messages.error(request, "Veuillez rentrer une adresse mail valide.")
             return render(request, "verificaionMail.html")
-        
+
         user = User.objects.filter(email=email).first()
 
         if user:
-            return redirect("modifierCode", email=email)
+            request.session['verification_type'] = 'password_reset'
+            send_verification_code(email, request)  
+            return redirect("verifier_code") 
         else:
-            messages.error(request, "Cette adresse ne correspond à aucun compte. Veuillez réessayez avec une autre ou créez un compte")
+            messages.error(request, "Cette adresse ne correspond à aucun compte. Veuillez réessayer ou créez un compte.")
             return redirect("verification")
 
     return render(request, "verificaionMail.html", status=200)
+
 
 
 # fonction pour changer le mot de passe après vérifiction
@@ -165,11 +176,11 @@ def Deconnection(request):
     logout(request)
     return redirect("login") 
 def users_view(request):
-    # نجيب كل المستخدمين النشطين (active=True)
+    
     users = User.objects.filter(is_active=True)
     return render(request, 'users.html', {'users': users})
 
-# فحص واش المستخدم أدمين
+
 def is_admin(user):
     return user.is_superuser
 
@@ -183,9 +194,46 @@ def create_admin_view(request):
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already exists.")
         else:
-            # إنشاء مستخدم أدمين جديد
+           
             User.objects.create_superuser(username=username, email=email, password=password)
             messages.success(request, "New admin created successfully.")
-            return redirect('users')  # رجوع لقائمة المستخدمين
+            return redirect('users')  
     
     return render(request, 'create_admin.html')
+
+def Verifier_Code(request):
+    if request.method == "POST":
+        code_saisi = request.POST.get('code')
+        code_session = request.session.get('reset_code')
+        email = request.session.get('reset_email')
+        verification_type = request.session.get('verification_type') 
+
+        if code_saisi == code_session:
+            if verification_type == 'activation':
+                try:
+                    user = User.objects.get(email=email)
+                    user.is_active = True
+                    user.save()
+                except User.DoesNotExist:
+                    messages.error(request, "Utilisateur non trouvé.")
+                    return redirect("creation")
+
+                messages.success(request, "Votre compte est activé, connectez-vous maintenant.")
+                return redirect("login")
+
+            elif verification_type == 'password_reset':
+                
+                return redirect("modifierCode", email=email)
+
+            else:
+                messages.error(request, "Type de vérification inconnu.")
+                return redirect("verification")
+
+        else:
+            messages.error(request, "Code incorrect. Veuillez réessayer.")
+
+    return render(request, "verifierCode.html")
+
+
+
+
