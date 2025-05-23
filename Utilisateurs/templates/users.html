@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Users List</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 30px auto;
+            font-family: "Jockey One", sans-serif;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #dcecec;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tbody tr:hover {
+            background-color: #e6f2ff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center; font-family: 'Jockey One', sans-serif;">Users List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>User Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if user.is_superuser %}
+                    Admin
+                    {% else %}
+                    User
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No active users found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
