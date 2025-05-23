@@ -223,7 +223,8 @@
           <img src="{% static 'connecter/search.png' %}" alt="Search" class="search-icon" />
           <input type="text" name="q" class="search-input" placeholder="Search by name..." />
         </form>
-
+        
+        <form method="GET" action="{% url 'filter' %}" class="filter-form">
         <div class="filter-controls">
           <button class="filter-button" id="filter-button">
             <img src="{% static 'connecter/filter.png' %}" alt="Filter" class="filter-icon" />
@@ -238,6 +239,7 @@
               {% endfor %}
           </select>
         </div>
+          </form>
       </section>
 
       <div class="product-header">
