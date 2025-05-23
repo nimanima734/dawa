@@ -11,4 +11,6 @@ urlpatterns = [
     path('verification/', Verification_Mail, name='verification'),
     path('modification-code/<str:email>/', Changement_Code, name="modifierCode"),
     path('logout/', Deconnection, name="deconnection"),
+    path('users/', users_view, name='users'),
+    path('users/create_admin/', create_admin_view, name='create_admin'),
 ]
