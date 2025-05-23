@@ -122,8 +122,6 @@
           <select name="category" id="category" class="form-control" onchange="this.form.submit()">
             <option value="">All Categories</option>
             {% for category in categories %}
-            <option value="">All Categories</option>
-            {% for category in categories %}
                 <option value="{{ category.id }}" {% if category.id == request.GET.category %} selected {% endif %}>{{ category.name }}</option>
 
             {% endfor %}
