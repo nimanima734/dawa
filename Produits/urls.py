@@ -14,7 +14,7 @@ urlpatterns = [
     path('modication/<int:pk>/', update_donnees.as_view(), name='modifier'),
     path('detail/<int:pk>/', edit.as_view(),name='detail'),  
     path('delete/<int:id>/', delete_product,name='delete'),
-    path('statistic/', statistic, name='statistic'), 
+   
     path('recherche/', recherche, name='recherche'),
     path('filter/', Filter, name='filter'),
     path('ajoutvente/<int:id>/', VenteProduits, name='ajoutvente'),
