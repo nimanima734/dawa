@@ -226,14 +226,34 @@ def create_admin_view(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        
+
+      
         if User.objects.filter(username=username).exists():
-            messages.error(request, "Username already exists.")
-        else:
-           
-            User.objects.create_superuser(username=username, email=email, password=password)
-            messages.success(request, "New admin created successfully.")
-            return redirect('users')  
-    
+            messages.error(request, "Ce nom d'utilisateur est déjà utilisé.")
+            return redirect('create_admin')
+        
+        
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Cette adresse e-mail est déjà utilisée.")
+            return redirect('create_admin')
+        
+      
+        try:
+            validate_email(email)
+        except ValidationError:
+            messages.error(request, "Adresse e-mail invalide.")
+            return redirect('create_admin')
+        
+       
+        if len(password) < 8 or not re.search(r'[A-Za-z]', password) \
+           or not re.search(r'\d', password) or not re.search(r'[^\w\s]', password):
+            messages.error(request, "Le mot de passe doit contenir au moins 8 caractères, incluant lettres, chiffres et caractères spéciaux.")
+            return redirect('create_admin')
+
+       
+        User.objects.create_superuser(username=username, email=email, password=password)
+        messages.success(request, "Nouvel administrateur créé avec succès.")
+        return redirect('users')  
+
     return render(request, 'create_admin.html')
 
