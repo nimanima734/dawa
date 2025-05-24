@@ -5,14 +5,57 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Créer un compte</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="{% static 'connecter/register.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" href="{% static 'connecter/register.css ' %"}>
+<style>  
+body{ 
+	background-color:rgba(139, 135, 135, 0.2); ;
+}
+	h2{ 
+	 color:rgba(16, 55, 88, 1) ;
+	 margin-left: 110px
+	}  
+  .overlay{ 
+	position: absolute;
+	background-color: white;
+	 width: 420px;
+    height: 480px;
+	top: 16%; /* Moves the card down to the middle */
+    left: 37%;
+	    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds a slight shadow */
+    border-radius: 8px; /* Rounds the corners */
+	padding-left:40px;
+  } 
+  .form-container input{ 
+	display: block;
+	    width: 340px; 
+    height: 35px;
+    margin: 20px 0; /* Adds space between input fields */
+    padding: 10px; /* Adds internal spacing */
+    border: 1px solid #ccc; /* Gives a light border */
+    border-radius: 50px; /* Rounds input borders */
+	margin-left: 10px;
+  } 
+  button{
+    width: 350px;
+    height: 47px;
+    background-color:rgba(16, 55, 88, 1);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer; 
+    text-align: center;
+    text-transform: uppercase; 
+	margin-left: 23px;
+  }
+	
+</style>
 </head>
 
 <body>
 	<div class="overlay">
 		<div class="form-container">
-			<h2>Créer un compte</h2>
+			<h2>Sing Up Card</h2>
 			<form method="POST">
 				{% csrf_token %}
 				{% if messages %}
@@ -21,12 +64,11 @@
 				{% endfor %}
 				{% endif %}
 
-				<input type="text" name="username" placeholder="Nom utilisateur" required>
-				<input type="email" name="email" placeholder="Adresse mail" required>
-				<input type="password" name="password" placeholder="Mot de passe" required>
-				<input type="password" name="password_confirm" placeholder="Confirmation mot de passe" required>
-
-				<button type="submit">Créer un compte</button>
+				<input type="text" name="username" placeholder="Username" required>
+				<input type="email" name="email" placeholder="E-mail" required>
+				<input type="password" name="password" placeholder="Password" required>
+				<input type="password" name="password_confirm" placeholder="Confirm password" required>
+				<button type="submit"> Submit</button>
 			</form>
 		</div>
 	</div>
