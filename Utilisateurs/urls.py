@@ -15,4 +15,5 @@ urlpatterns = [
     path('users/create_admin/', create_admin_view, name='create_admin'),
     path("verifier-code/", Verifier_Code, name="verifier_code"),
     path("modifier-code/<str:email>/", Changement_Code, name="modifierCode"),
+         path('delete_user/<int:user_id>/', delete_user, name='delete_user'),
 ]
