@@ -43,41 +43,47 @@ def Creation_Compte(request):
         password = request.POST['password']
         password_confirm = request.POST['password_confirm']
 
+        # تحقق من تطابق كلمات المرور
         if password != password_confirm:
-            messages.error(request, "Les mots de passe ne sont pas identiques. veuillez réessayer.")
+            messages.error(request, "Les mots de passe ne sont pas identiques. Veuillez réessayer.")
             return redirect("creation")
 
-        if len(password) < 8 or not re.search(r'[A-Za-z]', password) or not re.search(r'\d', password) or not re.search(r'[^\w\s]', password):
-            messages.error(request, 'Le mot de passse doit contenir au moins 8 caractères, incluant des lettres, des chiffres et des caractères spéciaux.')
+        # تحقق من قوة كلمة المرور
+        if len(password) < 8 or not re.search(r'[A-Za-z]', password) \
+           or not re.search(r'\d', password) or not re.search(r'[^\w\s]', password):
+            messages.error(request, "Le mot de passe doit contenir au moins 8 caractères, incluant des lettres, des chiffres et des caractères spéciaux.")
             return redirect("creation")
 
+        # تحقق من صحة البريد الإلكتروني
         try:
             validate_email(email)
         except ValidationError:
-            messages.error(request, "L'adresse e-mail invalide. Veuillez réessayer.")
+            messages.error(request, "Adresse e-mail invalide. Veuillez réessayer.")
             return redirect("creation")
 
+        # تحقق من عدم تكرار الاسم أو البريد الإلكتروني
         if User.objects.filter(username=username).exists():
             messages.error(request, "Ce nom d'utilisateur existe déjà. Veuillez réessayer.")
             return redirect("creation")
 
         if User.objects.filter(email=email).exists():
-            messages.error(request, "Cette adresse e-mail est déjà utilisée. Veuullez en choisir une autre.")
+            messages.error(request, "Cette adresse e-mail est déjà utilisée. Veuillez en choisir une autre.")
             return redirect("creation")
 
+        # إنشاء المستخدم وتعطيل الحساب مؤقتاً
         user = User.objects.create_user(username=username, email=email, password=password)
         user.is_active = False
         user.save()
 
+        # إرسال كود التحقق إلى البريد الإلكتروني
         request.session['verification_type'] = 'activation'
-        send_verification_code(email, request)
+        request.session['user_email'] = email  # لتحديد المستخدم لاحقًا عند التحقق
+        send_verification_code(email, request)  # هذه الدالة يجب أن ترسل كود التحقق عبر البريد
 
+        # إعادة التوجيه إلى صفحة إدخال كود التحقق
         return redirect("verifier_code")
 
-  
     return render(request, "creation.html")
-
-
 
 
 # fonction pour se connecter
