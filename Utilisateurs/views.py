@@ -19,26 +19,20 @@ def HomePageView(request):
 
 
 def send_verification_code(email, request):
-    
     code = str(random.randint(1000, 9999))
-
-   
     request.session['verification_code'] = code
     request.session['verification_email'] = email
 
-   
-    send_mail(
-        subject='Dawa Pharma - Confirmation de votre adresse e-mail',
-        message=f'Votre code de confirmation est : {code}',
-        from_email='Dawa Pharma <bouchrasraoui09@gmail.com>',
-        recipient_list=[email],
-        fail_silently=False,
-    )
+    subject = "Votre code de vérification"
+    message = f"Votre code de vérification est : {code}"
+    from_email = "votre_email@example.com"
+
+    send_mail(subject, message, from_email, [email])
 
 
 # fonction pour créer un compte 
 
-def Creation_Compte(request):
+Creation_Compte(request):
     
     if request.method == "POST":
 
@@ -171,8 +165,6 @@ def Changement_Code(request, email):
             'email':email
         }
     return render(request, "nouveauMDP.html", context)
-
-
 
 
 
