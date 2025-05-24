@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from datetime import date
-from django.shortcuts import render
 from django.db.models import Sum
 from Produits.models import Produits, Vente
 from .models import StatistiqueProduit
@@ -22,7 +21,6 @@ def generer_statistiques(request):
 
         stat.save()
 
-    #return
 
 def afficher_statistiques(request):
     stats = StatistiqueProduit.objects.filter(date=date.today())
