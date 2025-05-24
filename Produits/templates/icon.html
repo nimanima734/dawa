@@ -17,38 +17,42 @@
     th,
     td {
       border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
+      padding: 20px;
+      text-align: left; 
+            font-weight:bold ;
     }
 
     th {
-      background-color: #f4f4f4;
+      background-color: rgba(16, 55, 88, 1);
+      color: white; 
+
     }
 
-    #card {
-      margin-top: 30px;
-      padding: 15px;
-      border: 1px solid #aaa;
-      background-color: #fefefe;
-      border-radius: 5px;
-    }
+
 
     .purchase-btn,
     .cancel-btn {
       padding: 10px 20px;
       margin: 10px;
       border: none;
-      cursor: pointer;
+      cursor: pointer; 
+      position:absolute ; 
     }
 
     .purchase-btn {
-      background-color: green;
+      background-color: rgba(16, 55, 88, 1);
       color: white;
+      text-align: center;
+      width: 120px; 
+      left: 20%;
     }
 
     .cancel-btn {
-      background-color: red;
+      background-color:rgba(16, 55, 88, 1);
       color: white;
+      text-align: center;
+      width: 120px;
+      left: 70%;
     }
   </style>
 </head>
@@ -72,7 +76,7 @@
         <tr id="produit-{{ object.id }}">
           <td>{{ object.name }}</td>
           <td>{{ object.category }}</td>
-          <td>{{ object.quantite }}</td>
+          <td>{{ object.statut_quantite }}</td>
           <td>{{ object.price }} FCFA</td>
           <td>{{ object.description }}</td>
           <td>{{ object.date_ajout }}</td>
@@ -82,9 +86,6 @@
     </table>
 
     <div id="card">
-      <!-- <div id="stock-message">
-        The product quantity is very low.
-      </div> -->
       <div id="butt">
         <button class="purchase-btn" onclick="window.location.href='{% url 'ajoutvente' object.id %}'">Purchase</button>
 
