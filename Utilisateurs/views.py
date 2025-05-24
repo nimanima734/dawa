@@ -17,10 +17,6 @@ def HomePageView(request):
 
 
 
-
-import random
-from django.core.mail import send_mail
-
 def send_verification_code(email, request):
     
     code = str(random.randint(1000, 9999))
