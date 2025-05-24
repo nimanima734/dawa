@@ -5,22 +5,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajout des données</title>
+    <title>Add Product</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style1.css' %}">
 </head>
+<style>
+h3, #butt{
+    background-color: rgba(16,55,88,1);
+    color: white;
+}
+.blue-text{
+    color: rgb(145, 48, 48);
+    position: absolute;
+    top: 17%;
+    left: 40%;
+}
+.bb{
+    position: absolute;
+    top: 72%;
+    left: 20%;
+}
+form{
+    height: 500px;
+}
+
+</style>
 
 <body>
 
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-                <h3>Ajout des produits</h3>
-                <p class="blue-text">Veuillez noter que <br> tous les champs sont obligatoires</p>
+                <h3>Add Product</h3>
+                <p class="blue-text"> Please Note All Fields Are Required</p>
                 <div class="card">
-                    <h5 class="text-center mb-4">Pharmacie projet</h5>
 
                     <form class="form-card" method="POST" action="{% url 'add' %}" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -37,14 +57,14 @@
 
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Le nom du produit<span
+                                <label class="form-control-label px-3">Product Name<span
                                         class="text-danger">*</span></label>
                                 {{ form.name }}
                                 <div class="text-danger">{{ form.name.errors }}</div>
                             </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Sélectionnez la catégorie<span
+                                <label class="form-control-label px-3">Select Category<span
                                         class="text-danger">*</span></label>
                                 {{ form.category }}
                                 <div class="text-danger">{{ form.category.errors }}</div>
@@ -53,14 +73,14 @@
 
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Le prix du produit<span
+                                <label class="form-control-label px-3">Product Price<span
                                         class="text-danger">*</span></label>
                                 {{ form.price }}
                                 <div class="text-danger">{{ form.price.errors }}</div>
                             </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">La quantité de produit<span
+                                <label class="form-control-label px-3">Product Quantity<span
                                         class="text-danger">*</span></label>
                                 {{ form.quantite }}
                                 <div class="text-danger">{{ form.quantite.errors }}</div>
@@ -69,14 +89,14 @@
 
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Date d'expiration<span
+                                <label class="form-control-label px-3"> Expiry Date <span
                                         class="text-danger">*</span></label>
                                 {{ form.date_expiration }}
                                 <div class="text-danger">{{ form.date_expiration.errors }}</div>
                             </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Image du produit<span
+                                <label class="form-control-label px-3">Product Image<span
                                         class="text-danger">*</span></label>
                                 {{ form.image }}
                                 <div class="text-danger">{{ form.image.errors }}</div>
@@ -85,7 +105,7 @@
 
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-12 flex-column d-flex">
-                                <label class="form-control-label px-3">Description du produit<span
+                                <label class="form-control-label px-3">Product Description<span
                                         class="text-danger">*</span></label>
                                 {{ form.description }}
                                 <div class="text-danger">{{ form.description.errors }}</div>
@@ -95,11 +115,14 @@
                         <br>
                         <div class="row justify-content-end">
                             <div class="form-group col-sm-6">
-                                <input type="submit" class="btn btn-primary btn-block" value="Enregistrer">
-                            </div>
-                        </div>
+                                <input type="submit" class="btn btn-primary btn-block" value="Save Data"  id="butt" class="bb">
+                            </div> 
+                        </div> 
+                               
                     </form>
-
+                                           <a href="{% url 'product'}"> 
+                                    <button id="butt" class="bb">Go Back</button>
+                                </a>
                 </div>
             </div>
         </div>
