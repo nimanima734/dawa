@@ -31,8 +31,7 @@ def send_verification_code(email, request):
 
 
 # fonction pour créer un compte 
-
-Creation_Compte(request):
+def Creation_Compte(request):
     
     if request.method == "POST":
 
