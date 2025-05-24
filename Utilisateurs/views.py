@@ -208,8 +208,6 @@ def Verifier_Code(request):
     return render(request, "verifierCode.html")
 
 
-
-
 def Deconnection(request):
     logout(request)
     return redirect("login") 
