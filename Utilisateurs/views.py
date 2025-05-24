@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import random
 from django.core.mail import send_mail
-
+from django.shortcuts import redirect, get_object_or_404
 @login_required(login_url='login')
 def HomePageView(request):
     return render(request, 'homepage.html')
@@ -256,4 +256,10 @@ def create_admin_view(request):
         return redirect('users')  
 
     return render(request, 'create_admin.html')
+@user_passes_test(lambda u: u.is_superuser)
+def delete_user(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    if not user.is_superuser: 
+        user.delete()
+    return redirect('users')
 
