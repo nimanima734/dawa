@@ -23,7 +23,7 @@ def send_verification_code(email, request):
 
     request.session['verification_code'] = code
     request.session['verification_email'] = email
-
+   print(f"Sending verification code {code} to email: {email}")
     send_mail(
         subject='Dawa Pharma - Confirmation de votre adresse e-mail',
         message=f'Votre code de confirmation est : {code}',
