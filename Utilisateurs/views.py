@@ -25,7 +25,7 @@ def send_verification_code(email, request):
 
     subject = "Votre code de vérification"
     message = f"Votre code de vérification est : {code}"
-    from_email = "votre_email@example.com"
+    from_email = "dawapharma91@example.com"
 
     send_mail(subject, message, from_email, [email])
 
@@ -62,12 +62,15 @@ def Creation_Compte(request):
             messages.error(request, "Cette adresse e-mail est déjà utilisée. Veuullez en choisir une autre.")
             return redirect("creation")
 
+        request.session['verification_type'] = 'activation'
+        send_verification_code(email, request)
+
         user = User.objects.create_user(username=username, email=email, password=password)
         user.is_active = False
         user.save()
 
-        request.session['verification_type'] = 'activation'
-        send_verification_code(email, request)
+        # request.session['verification_type'] = 'activation'
+       # send_verification_code(email, request)
 
         return redirect("verifier_code")
 
