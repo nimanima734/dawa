@@ -2,9 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('productForm');
 
   form.addEventListener('submit', function(e) {
-      e.preventDefault(); // نمنع الإرسال العادي
+      e.preventDefault(); 
 
-      // التحقق من الحقول المطلوبة
       const inputs = form.querySelectorAll('input, select, textarea');
       let isValid = true;
 
