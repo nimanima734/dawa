@@ -177,8 +177,8 @@ def Changement_Code(request, email):
 def Verifier_Code(request):
     if request.method == "POST":
         code_saisi = request.POST.get('code')
-        code_session = request.session.get('reset_code')
-        email = request.session.get('reset_email')
+        code_session = request.session.get('verification_code')
+        email = request.session.get('verification_email')
         verification_type = request.session.get('verification_type')  
 
         if code_saisi == code_session:
