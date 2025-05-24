@@ -18,12 +18,19 @@ def HomePageView(request):
 
 
 
+
+import random
+from django.core.mail import send_mail
+
 def send_verification_code(email, request):
+    
     code = str(random.randint(1000, 9999))
 
+   
     request.session['verification_code'] = code
     request.session['verification_email'] = email
 
+   
     send_mail(
         subject='Dawa Pharma - Confirmation de votre adresse e-mail',
         message=f'Votre code de confirmation est : {code}',
@@ -43,47 +50,42 @@ def Creation_Compte(request):
         password = request.POST['password']
         password_confirm = request.POST['password_confirm']
 
-        # تحقق من تطابق كلمات المرور
         if password != password_confirm:
-            messages.error(request, "Les mots de passe ne sont pas identiques. Veuillez réessayer.")
+            messages.error(request, "Les mots de passe ne sont pas identiques. veuillez réessayer.")
             return redirect("creation")
 
-        # تحقق من قوة كلمة المرور
-        if len(password) < 8 or not re.search(r'[A-Za-z]', password) \
-           or not re.search(r'\d', password) or not re.search(r'[^\w\s]', password):
-            messages.error(request, "Le mot de passe doit contenir au moins 8 caractères, incluant des lettres, des chiffres et des caractères spéciaux.")
+        if len(password) < 8 or not re.search(r'[A-Za-z]', password) or not re.search(r'\d', password) or not re.search(r'[^\w\s]', password):
+            messages.error(request, 'Le mot de passse doit contenir au moins 8 caractères, incluant des lettres, des chiffres et des caractères spéciaux.')
             return redirect("creation")
 
-        # تحقق من صحة البريد الإلكتروني
         try:
             validate_email(email)
         except ValidationError:
-            messages.error(request, "Adresse e-mail invalide. Veuillez réessayer.")
+            messages.error(request, "L'adresse e-mail invalide. Veuillez réessayer.")
             return redirect("creation")
 
-        # تحقق من عدم تكرار الاسم أو البريد الإلكتروني
         if User.objects.filter(username=username).exists():
             messages.error(request, "Ce nom d'utilisateur existe déjà. Veuillez réessayer.")
             return redirect("creation")
 
         if User.objects.filter(email=email).exists():
-            messages.error(request, "Cette adresse e-mail est déjà utilisée. Veuillez en choisir une autre.")
+            messages.error(request, "Cette adresse e-mail est déjà utilisée. Veuullez en choisir une autre.")
             return redirect("creation")
 
-        # إنشاء المستخدم وتعطيل الحساب مؤقتاً
         user = User.objects.create_user(username=username, email=email, password=password)
         user.is_active = False
         user.save()
 
-        # إرسال كود التحقق إلى البريد الإلكتروني
         request.session['verification_type'] = 'activation'
-        request.session['user_email'] = email  # لتحديد المستخدم لاحقًا عند التحقق
-        send_verification_code(email, request)  # هذه الدالة يجب أن ترسل كود التحقق عبر البريد
+        send_verification_code(email, request)
 
-        # إعادة التوجيه إلى صفحة إدخال كود التحقق
+        # بعد إنشاء المستخدم وإرسال الكود، نعيد التوجيه لصفحة التحقق
         return redirect("verifier_code")
 
+    # لو كان GET أو أي طلب غير POST، نعرض صفحة التسجيل
     return render(request, "creation.html")
+
+
 
 
 # fonction pour se connecter
@@ -185,7 +187,7 @@ def Verifier_Code(request):
         code_saisi = request.POST.get('code')
         code_session = request.session.get('verification_code')
         email = request.session.get('verification_email')
-        verification_type = request.session.get('verification_type')  
+        verification_type = request.session.get('verification_type')  # نوع التحقق
 
         if code_saisi == code_session:
             if verification_type == 'activation':
@@ -201,7 +203,7 @@ def Verifier_Code(request):
                 return redirect("login")
 
             elif verification_type == 'password_reset':
-                
+                # توجه لصفحة تغيير كلمة المرور، مع تمرير الإيميل
                 return redirect("modifierCode", email=email)
 
             else:
@@ -212,6 +214,8 @@ def Verifier_Code(request):
             messages.error(request, "Code incorrect. Veuillez réessayer.")
 
     return render(request, "verifierCode.html")
+
+
 
 
 def Deconnection(request):
