@@ -26,7 +26,7 @@ def send_verification_code(email, request):
     send_mail(
         subject='Dawa Pharma email confirmation',
         message=f'Your confirmation code is: {code}',
-        from_email='Dawa Pharma <dawapharma91@gmail.com>',
+        from_email='Dawa Pharma <bouchrasraoui09@gmail.com>',
         recipient_list=[email],
     )
 
