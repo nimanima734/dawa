@@ -20,14 +20,16 @@ def HomePageView(request):
 
 def send_verification_code(email, request):
     code = str(random.randint(1000, 9999))
-    request.session['reset_code'] = code
-    request.session['reset_email'] = email
-    
+
+    request.session['verification_code'] = code
+    request.session['verification_email'] = email
+
     send_mail(
-        subject='Dawa Pharma email confirmation',
-        message=f'Your confirmation code is: {code}',
+        subject='Dawa Pharma - Confirmation de votre adresse e-mail',
+        message=f'Votre code de confirmation est : {code}',
         from_email='Dawa Pharma <bouchrasraoui09@gmail.com>',
         recipient_list=[email],
+        fail_silently=False,
     )
 
 
