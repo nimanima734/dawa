@@ -1,72 +1,259 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{% static 'connecter/styleFacture.css' %}">
-  <title>Invoice Table</title>
-</head>
+  <title>Invoice</title> 
+  <style>
+    .butt{ 
+      background-color: rgba(16, 55, 88, 1);
+      color: white; 
+      border-radius: 30px;
+      width: 100px;
+      height: 40px; 
+      margin-right: 50px;
+      margin-left: 40px;
+      cursor: pointer;
+    }  
+body {
+  margin:0;
+  border-top: 10px solid rgb(2, 2, 2);
+}
 
+main {
+  margin: 2rem;
+}
+h1 {
+  color: rgba(16, 55, 88, 1);
+  margin: 0;
+  margin-top: 1rem;
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+}
+h2 {
+  margin:0;
+  margin-top: 2rem;
+  color: rgba(16, 55, 88, 1);
+  font-size: 3rem;
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+}
+p {
+  font-size: 0.8rem;
+  color: rgba(16, 55, 88, 1);
+  margin:0;
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+
+}
+
+time {
+  margin:0;
+  margin-left: 0;
+  font-size:1rem;
+  font-weight: 600;
+ color: rgba(16, 55, 88, 1);
+}
+
+.client th {
+  font-size: 18px;
+  color: rgba(16, 55, 88, 1);
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+}
+.description th {
+  font-size: 18px;
+  color: rgba(16, 55, 88, 1);
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+td {
+  border: 0px solid rgba(16, 55, 88, 1);
+}
+
+.client td {
+  border: 0px;
+  font-size: 14px;
+}
+
+
+
+table {
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+th {
+  font-size: 1.rem;
+}
+
+
+.description tr:nth-child(odd):not(:first-child) {
+  background-color: #eee;
+}
+
+.client th:nth-child(3) {
+
+  text-align: left;
+}
+
+.client th:nth-child(2) {
+
+  text-align: left;
+}
+.client th:nth-child(1) {
+
+  text-align: left;
+}
+.description {
+  font-size: 14px;
+  border-collapse: collapse;
+ 
+}
+.description thead {
+   border-bottom: 5px solid  rgba(16, 55, 88, 1);
+}
+
+.description td {
+  padding:0.5rem;
+  color: rgb(0, 0, 0);
+}
+
+.description td:first-child {
+  color: black;
+}
+.description tfoot td:first-child {
+  background-color: white;
+}
+.description td:nth-child(1) {
+  text-align: left;
+}
+.description td:nth-child(2) {
+  text-align: right;
+}
+.description td:nth-child(3) {
+  text-align: right;
+}
+.description td:nth-child(4) {
+  text-align: right;
+}
+
+.description th:nth-child(1) {
+  text-align: left;
+}
+.description th:nth-child(2) {
+  text-align: left;
+}
+.description th:nth-child(3) {
+  text-align: right;
+}
+.description th:nth-child(4) {
+  text-align: right;
+}
+
+tfoot {
+  font-size: 10px;
+}
+
+.description tfoot td:first-child(1) {
+  background:rgba(16, 55, 88, 1);
+}
+
+tfoot tr:first-child td:first-child{
+  color: rgba(16, 55, 88, 1);
+  font-size:0.8rem;
+}
+tfoot tr:first-child td:last-child{
+  font-size: 1rem;
+  color: black;
+  font-weight: 600;
+}
+tfoot tr:first-child td:nth-child(2){
+  font-size: 1rem;
+  color: rgba(16, 55, 88, 1);
+  font-weight: 600;
+}
+tfoot tr:nth-child(2) td:nth-child(1){
+  font-size: 1rem;
+  text-align: right;
+  color: rgba(16, 55, 88, 1);  
+  font-weight: 600;
+}
+tfoot tr:nth-child(2) td:nth-child(2){
+  font-size: 1rem;
+  color: rgba(16, 55, 88, 1);
+  font-weight: 600;
+}
+
+tfoot tr:last-child td:last-child {
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin:0;
+  color: rgb(0, 0, 0);
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+tbody {
+   border-bottom: 1px solid #161515;
+}
+
+  </style>
+</head>
 <body>
   <main>
-    <img src="{% static 'connecter/logo.png' %}" alt="Logo" width="10%">
-
-
-    <h2>DAWAPHARMA</h2>
-    <p><time>Date & Time: {{sale_date}}</time></p>
-
+    <h2>Purchase Invoice</h2>
+    <p><time>Date & Hour :{{sale_date}} </time></p>
     <table class="client">
       <tr>
-        <th>Invoice For</th>
-        <th>Invoice Number</th>
+        <th>Client Name</th>
+        <th>Invoice ID</th>
       </tr>
       <tr>
         <td>{{customer}}</td>
         <td>{{id}}</td>
       </tr>
+        
     </table>
-
     <hr size="1">
 
     <table class="description">
       <tbody>
         <tr>
           <th>Purchased Product</th>
-          <th>Qty</th>
+          <th>Quantity</th>
           <th>Unit Price</th>
-          <th>Total Amount</th>
+          <th>Total Price</th>
         </tr>
         <tr>
+
           <td>{{produit}}</td>
-          <td>{{quantite}}</td>
-          <td>{{prix_unitaire}} da</td>
-          <td>{{total_amount}} da</td>
+          <td> {{quantite}}</td>
+          <td> {{prix_unitaire}} DA</td>
+          <td>{{total_amount}} DA</td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="2">Note</td>
-          <td>Sold products are neither exchanged nor refunded</td>
-        </tr>
-        <tr>
-          <td colspan="3">For any issues, please contact the seller.</td>
-        </tr>
-        <tr>
-          <td colspan="4">{{total_amount}} da</td>
-        </tr>
-      </tfoot>
-    </table>
+        <tfoot>
+          <tr>
+            <td colspan="2">Remark</td>
+            <td> Please We neither Change Nor Refund The Purchased Product </td>
+          </tr>
+          <tr>
+            <td colspan="3">For Any Concerns, See The Seller </td>
+          </tr>
+          <tr>
+            <td colspan="4">{{total_amount}} DA</td>
+          </tr>
+        </tfoot>  
+      </table>
   </main>
-  <button id="print-button" style="background-color: blue; color: aliceblue;">Print</button>
+  <button id="print-button" class="butt">Print</button>  
+   <a href="{% url 'products' %}">
+  <button class="butt" oncklick="history.back(-1)" >Go Back</button>
+    </a>
 </body>
-
 <script>
-  document.getElementById("print-button").addEventListener("click", function () {
-    window.print();
+  document.getElementById("print-button").addEventListener("click", function() {
+      window.print();
   });
-</script>
-
+  </script>
 </html>
