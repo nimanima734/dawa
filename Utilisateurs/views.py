@@ -17,6 +17,7 @@ def HomePageView(request):
     return render(request, 'homepage.html')
 
 
+
 def send_verification_code(email, request):
     code = str(random.randint(1000, 9999))
     request.session['reset_code'] = code
@@ -25,9 +26,11 @@ def send_verification_code(email, request):
     send_mail(
         subject='Dawa Pharma email confirmation',
         message=f'Your confirmation code is: {code}',
-        from_email='Dawa Pharma <dawapharma91@gmail.com>',
+        from_email='Dawa Pharma <bouchrasraoui09@gmail.com>',
         recipient_list=[email],
     )
+
+
 # fonction pour créer un compte 
 
 def Creation_Compte(request):
@@ -67,10 +70,11 @@ def Creation_Compte(request):
         request.session['verification_type'] = 'activation'
         send_verification_code(email, request)
 
-      
         return redirect("verifier_code")
 
+  
     return render(request, "creation.html")
+
 
 
 
@@ -95,7 +99,6 @@ def Connecter_Compte(request):
     return render (request, 'login.html')
 
 
-# fonction pour la vérification de l'adresse mail
 
 def Verification_Mail(request):
     if request.method == "POST":
@@ -118,8 +121,6 @@ def Verification_Mail(request):
     return render(request, "verificaionMail.html", status=200)
 
 
-
-# fonction pour changer le mot de passe après vérifiction
 
 def Changement_Code(request, email):
 
@@ -169,7 +170,42 @@ def Changement_Code(request, email):
 
 
 
-# fonction pour la deconnection
+
+
+def Verifier_Code(request):
+    if request.method == "POST":
+        code_saisi = request.POST.get('code')
+        code_session = request.session.get('reset_code')
+        email = request.session.get('reset_email')
+        verification_type = request.session.get('verification_type')  
+
+        if code_saisi == code_session:
+            if verification_type == 'activation':
+                try:
+                    user = User.objects.get(email=email)
+                    user.is_active = True
+                    user.save()
+                except User.DoesNotExist:
+                    messages.error(request, "Utilisateur non trouvé.")
+                    return redirect("creation")
+
+                messages.success(request, "Votre compte est activé, connectez-vous maintenant.")
+                return redirect("login")
+
+            elif verification_type == 'password_reset':
+                
+                return redirect("modifierCode", email=email)
+
+            else:
+                messages.error(request, "Type de vérification inconnu.")
+                return redirect("verification")
+
+        else:
+            messages.error(request, "Code incorrect. Veuillez réessayer.")
+
+    return render(request, "verifierCode.html")
+
+
 
 
 def Deconnection(request):
@@ -200,40 +236,4 @@ def create_admin_view(request):
             return redirect('users')  
     
     return render(request, 'create_admin.html')
-
-def Verifier_Code(request):
-    if request.method == "POST":
-        code_saisi = request.POST.get('code')
-        code_session = request.session.get('reset_code')
-        email = request.session.get('reset_email')
-        verification_type = request.session.get('verification_type') 
-
-        if code_saisi == code_session:
-            if verification_type == 'activation':
-                try:
-                    user = User.objects.get(email=email)
-                    user.is_active = True
-                    user.save()
-                except User.DoesNotExist:
-                    messages.error(request, "Utilisateur non trouvé.")
-                    return redirect("creation")
-
-                messages.success(request, "Votre compte est activé, connectez-vous maintenant.")
-                return redirect("login")
-
-            elif verification_type == 'password_reset':
-                
-                return redirect("modifierCode", email=email)
-
-            else:
-                messages.error(request, "Type de vérification inconnu.")
-                return redirect("verification")
-
-        else:
-            messages.error(request, "Code incorrect. Veuillez réessayer.")
-
-    return render(request, "verifierCode.html")
-
-
-
 
