@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
-
 from django.contrib.auth import login,authenticate, logout
 from django.contrib import messages
-from django.urls import reverse
 import re
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
@@ -12,25 +10,20 @@ from django.contrib.auth.decorators import login_required
 import random
 from django.core.mail import send_mail
 from django.shortcuts import redirect, get_object_or_404
+
+
 @login_required(login_url='login')
 def HomePageView(request):
     return render(request, 'homepage.html')
 
 
-
-
-import random
-from django.core.mail import send_mail
-
 def send_verification_code(email, request):
     
     code = str(random.randint(1000, 9999))
 
-   
     request.session['verification_code'] = code
     request.session['verification_email'] = email
 
-   
     send_mail(
         subject='Dawa Pharma - Confirmation de votre adresse e-mail',
         message=f'Votre code de confirmation est : {code}',
@@ -43,6 +36,7 @@ def send_verification_code(email, request):
 # fonction pour créer un compte 
 
 def Creation_Compte(request):
+    
     if request.method == "POST":
 
         username = request.POST['username']
@@ -79,10 +73,8 @@ def Creation_Compte(request):
         request.session['verification_type'] = 'activation'
         send_verification_code(email, request)
 
-        # بعد إنشاء المستخدم وإرسال الكود، نعيد التوجيه لصفحة التحقق
         return redirect("verifier_code")
 
-    # لو كان GET أو أي طلب غير POST، نعرض صفحة التسجيل
     return render(request, "creation.html")
 
 
@@ -203,7 +195,7 @@ def Verifier_Code(request):
                 return redirect("login")
 
             elif verification_type == 'password_reset':
-                # توجه لصفحة تغيير كلمة المرور، مع تمرير الإيميل
+              
                 return redirect("modifierCode", email=email)
 
             else:
