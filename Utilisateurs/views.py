@@ -184,6 +184,11 @@ def Verifier_Code(request):
         verification_type = request.session.get('verification_type')  # نوع التحقق
 
         if code_saisi == code_session:
+            # ✅ مسح بيانات الجلسة بعد تحقق الكود
+            request.session.pop('verification_code', None)
+            request.session.pop('verification_email', None)
+            request.session.pop('verification_type', None)
+
             if verification_type == 'activation':
                 try:
                     user = User.objects.get(email=email)
@@ -197,7 +202,6 @@ def Verifier_Code(request):
                 return redirect("login")
 
             elif verification_type == 'password_reset':
-                # توجه لصفحة تغيير كلمة المرور، مع تمرير الإيميل
                 return redirect("modifierCode", email=email)
 
             else:
@@ -208,6 +212,7 @@ def Verifier_Code(request):
             messages.error(request, "Code incorrect. Veuillez réessayer.")
 
     return render(request, "verifierCode.html")
+
 
 
 
