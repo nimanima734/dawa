@@ -78,8 +78,6 @@ def Creation_Compte(request):
     return render(request, "creation.html")
 
 
-
-
 # fonction pour se connecter
 
 def Connecter_Compte(request):
