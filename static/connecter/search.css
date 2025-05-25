@@ -6,7 +6,8 @@ body {
   padding-left: 0%;
 }
 
-#sidebar {
+#sidebar { 
+  position:absolute;
   width: 340px;
   height: 100vh;
   background-color: rgb(220, 220, 220);
@@ -85,7 +86,7 @@ small {
 #product-row {
   display: flex;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: black;
   font-weight: bold;
   text-transform: uppercase;
   border-bottom: 2px solid #ccc;
@@ -134,4 +135,4 @@ small {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+}    
