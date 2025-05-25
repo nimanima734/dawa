@@ -7,7 +7,7 @@ body {
 }
 
 #sidebar { 
-  position:absolute;
+  position:fixed;
   width: 340px;
   height: 100vh;
   background-color: rgb(220, 220, 220);
@@ -82,11 +82,10 @@ small {
   border-bottom: 2px solid rgba(120, 120, 120, 1);
 }
 
-#product-heads,
-#product-row {
+#product-heads {
   display: flex;
   padding: 20px;
-  background-color: black;
+  background-color: #f4f4f4;
   font-weight: bold;
   text-transform: uppercase;
   border-bottom: 2px solid #ccc;
@@ -94,7 +93,18 @@ small {
   margin-top: 20px;
   margin-bottom: 10px;
   gap: 43px;
-}
+} 
+#product-row{
+     display: flex;
+  padding: 20px;
+  background-color: #f4f4f4;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ccc;
+  color: rgba(16, 55, 88, 1);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  gap: 45px;
+} 
 
 #page {
   display: flex;
@@ -102,7 +112,9 @@ small {
 }
 
 #side {
-  display: block;
+  display: block; 
+  position:absolute; 
+  left:25%;
 }
 
 #heading2 {
