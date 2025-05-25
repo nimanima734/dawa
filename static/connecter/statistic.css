@@ -90,6 +90,8 @@ small{
 }
 
 .main-content {
+ position:absolute;
+ left:27%;
   margin-top: 35px;
   width: 50%;
 }
