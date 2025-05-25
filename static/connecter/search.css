@@ -5,6 +5,10 @@ body {
   margin: 0%;
   padding-left: 0%;
 }
+#all{
+  position: absolute;
+  left:30%;
+}
 
 #sidebar { 
   position:fixed;
@@ -114,8 +118,7 @@ small {
 
 #side {
   display: block; 
-   position:absolute;
-  left:20%;
+  
   hight:100hv;
   widht:40%;
 }
