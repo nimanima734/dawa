@@ -182,13 +182,13 @@ def Verifier_Code(request):
             request.session.pop('verification_type', None)
 
             if verification_type == 'activation':
-                # try:
+                 try:
                     user = User.objects.get(email=email)
                     user.is_active = True
                     user.save()
-                # except User.DoesNotExist:
-                #     messages.error(request, "Utilisateur non trouvé.")
-                #     return redirect("creation")
+                 except User.DoesNotExist:
+                     messages.error(request, "Utilisateur non trouvé.")
+                     return redirect("creation")
 
                 messages.success(request, "Votre compte est activé, connectez-vous maintenant.")
                 return redirect("login")
