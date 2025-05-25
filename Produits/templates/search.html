@@ -12,34 +12,50 @@
 
 <body>
     <div id="page">
-        <div id="sidebar">
-            <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
-            <h1 id="heading1">
-                <span class="word1">dawa</span>
-                <span class="word2">pharma</span>
-            </h1>
-            <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
-            <button onclick="window.location.href='{% url 'homepage' %}'">
-                <img src="{% static 'connecter/icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page
-            </button>
-            <button onclick="window.location.href='{% url 'products' %}'">
-                <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
-            </button>
-            <button onclick="window.location.href='statistic.html'">
-                <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Statistics
-            </button>
-            <button onclick="window.location.href='{% url 'show_notifications' %}'">
-                <img src="{% static 'connecter/icon4.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
-            </button>
-            <button onclick="window.location.href='{% url 'about' %}'">
-                <img src="{% static 'connecter/icon5.png' %}" alt="icon">&nbsp;About
-            </button>
-            <form method="post" action="{% url 'deconnection' %}">{% csrf_token %}
-                <button type="submit">
-                    <img src="{% static 'connecter/icon6.png' %}" alt="icon">&nbsp;Log out
-                </button>
-            </form>
+        <div class"post">
+    <div id="mainc">
+    <div id="sidebar">
+      <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
+      <h1 id="heading1">
+        <span class="word1">dawa</span>
+        <span class="word2">pharma</span>
+      </h1>
+      <small>MEDICINE &nbsp; CONQUERS &nbsp; ILLNESS</small>
+      <button type="button" onclick="window.location.href='{% url 'homepage' %}'">
+        <img src="{% static 'connecter/icon1.png' %}" alt="icon">&nbsp;&nbsp;Home page
+      </button>
+      <button type="button" onclick="window.location.href='{% url 'products' %}'">
+        <img src="{% static 'connecter/icon2.png' %}" alt="icon">&nbsp;Products
+      </button>
+      {% if user.is_superuser %}
+      <button type="button" onclick="window.location.href='{% url 'afficher_statistiques' %}'">
+        <img src="{% static 'connecter/icon3.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;statistic
+      </button>
+      {% endif %}
+      <button type="button" onclick="window.location.href='{% url 'show_notifications' %}'">
+        <img src="{% static 'connecter/icon4.png' %}" alt="icon">&nbsp;&nbsp;&nbsp;Notification
+      </button>
+
+      {% if user.is_superuser %}
+      <!-- زر More فيه Dropdown -->
+      <div class="dropdown">
+        <button class="dropbtn">👥 More ▼</button>
+        <div class="dropdown-content">
+          <a href="{% url 'users' %}">👤 Users</a>
+          <a href="{% url 'create_admin' %}">➕ Create Admin</a>
         </div>
+      </div>
+      {% endif %}
+      <button type="button" onclick="window.location.href='{% url 'about' %}'">
+        <img src="{% static 'connecter/icon5.png' %} " alt="icon">&nbsp;About
+      </button>
+      <form method="post" action="{% url 'deconnection' %}">{% csrf_token %}
+        <button type="submit">
+          <img src="{% static 'connecter/icon6.png' %}" alt="icon">&nbsp;Log out
+        </button>
+      </form>
+    </div>
+      </div>
         <div id="all">
         <div id="side">
             <h1 id="heading2">Search Results</h1>
