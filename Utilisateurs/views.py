@@ -25,7 +25,7 @@ def send_verification_code(email, request):
 
     subject = "Votre code de vérification"
     message = f"Votre code de vérification est : {code}"
-    from_email = "dawapharma91@example.com"
+    from_email = "bouchrasraoui09@example.com"
 
     send_mail(subject, message, from_email, [email])
 
