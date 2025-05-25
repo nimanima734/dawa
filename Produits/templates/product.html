@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="{% static 'connecter/product.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
   <style>
+    .post{
+      position: fixed; 
+    } 
     .product-header,
     .product-strip {
       display: flex;
@@ -179,7 +182,8 @@
 </head>
 
 <body>
-  <div id="mainc">
+  <div class"post">
+    <div id="mainc">
     <div id="sidebar">
       <img id="im2" src="{% static 'connecter/2.png' %}" alt="pharmacy">
       <h1 id="heading1">
@@ -221,6 +225,7 @@
         </button>
       </form>
     </div>
+      </div>
 
     <div id="official">
       <div id="addproduct">
