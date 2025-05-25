@@ -116,6 +116,8 @@ small {
   display: block; 
    position:absolute;
   left:20%;
+  hight:100hv;
+  widht:40%;
 }
 
 #heading2 {
