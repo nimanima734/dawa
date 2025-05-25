@@ -99,7 +99,7 @@ small {
   margin-top: 20px;
   margin-bottom: 10px;
   gap: 43px; 
-  width:70%;
+  width:100%;
 } 
 #product-row{
      display: flex;
@@ -112,7 +112,7 @@ small {
   margin-bottom: 10px;
   margin-left:10px;
   gap: 55px; 
-   width:40%;
+   width:100%;
 } 
 
 #page {
