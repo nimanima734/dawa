@@ -8,10 +8,10 @@
 
 #sidebar{ 
     position: fixed;
-    width:340px;
+    width:250px;
     height: 100vh;
     background-color: rgb(220, 220, 220) ;
-    padding-top: 100px; 
+     
     border: 1px solid rgb(201, 199, 199); 
 }
 #sidebar button{
