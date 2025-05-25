@@ -103,6 +103,7 @@ small {
   color: rgba(16, 55, 88, 1);
   margin-top: 20px;
   margin-bottom: 10px;
+  margin-left:10px;
   gap: 55px;
 } 
 
@@ -114,7 +115,8 @@ small {
 #side {
   display: block; 
   position:absolute; 
-  left:25%;
+  left:30%;
+  width:60%;
 }
 
 #heading2 {
