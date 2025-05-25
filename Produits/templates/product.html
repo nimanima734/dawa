@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="{% static 'connecter/product.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
   <style>
+    .all{
+      position: absolute;
+      left:50%;
+    }
     .product-header,
     .product-strip {
       display: flex;
@@ -223,7 +227,7 @@
       </form>
     </div>
       </div>
-
+<div class="all">
     <div id="official">
       <div id="addproduct">
         <h1 id="heading2">Products:</h1>
@@ -315,6 +319,7 @@
       </div>
       {% endfor %}
     </div>
+  </div>
   </div>
 
   <script src="{% static 'jquery-3.7.1.min.js' %}"></script>
