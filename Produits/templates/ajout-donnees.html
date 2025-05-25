@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">
+<!--      <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"> 
+    <link rel="stylesheet" href="{% static 'font-awesome.min.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/style1.css' %}"> 
 </head>
 <style>
@@ -119,7 +119,7 @@ form{
                             </div> 
                         </div> 
                                
-                    </form><button class="bb blue-text"  onclick="window.location.href='{% url 'products' %}'">Go Back</button>
+                    </form><button id="butt" class="bb"  onclick="window.location.href='{% url 'products' %}'">Go Back</button>
 
                 </div>
             </div>
