@@ -8,10 +8,10 @@
 
 #sidebar{ 
     position: fixed;
-    width:250px;
+    width:380px;
     height: 100vh;
     background-color: rgb(220, 220, 220) ;
-     
+    padding-top: 100px; 
     border: 1px solid rgb(201, 199, 199); 
 }
 #sidebar button{
@@ -90,10 +90,8 @@ small{
 }
 
 .main-content {
- position: absolute;
- left:27%;
   margin-top: 35px;
-  width: 90%;
+  width: 50%;
 }
 
 @media (max-width: 991px) {
