@@ -69,8 +69,6 @@ def Creation_Compte(request):
         user.is_active = False
         user.save()
 
-        # request.session['verification_type'] = 'activation'
-       # send_verification_code(email, request)
 
         return redirect("verifier_code")
 
@@ -175,10 +173,10 @@ def Verifier_Code(request):
         code_saisi = request.POST.get('code')
         code_session = request.session.get('verification_code')
         email = request.session.get('verification_email')
-        verification_type = request.session.get('verification_type')  # نوع التحقق
+        verification_type = request.session.get('verification_type') 
 
         if code_saisi == code_session:
-            # ✅ مسح بيانات الجلسة بعد تحقق الكود
+           
             request.session.pop('verification_code', None)
             request.session.pop('verification_email', None)
             request.session.pop('verification_type', None)
