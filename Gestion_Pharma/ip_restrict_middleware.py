@@ -8,9 +8,6 @@ ALLOWED_IPS = [
     '192.168.8.140',
     '192.168.8.132',
     '154.255.21.18',
- 
-
-
 ]
 
 class RestrictIPMiddleware:
