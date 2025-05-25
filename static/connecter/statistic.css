@@ -91,9 +91,9 @@ small{
 
 .main-content {
  position:absolute;
- left:27%;
+ left:30%;
   margin-top: 35px;
-  width: 50%;
+  width: 65%;
 }
 
 @media (max-width: 991px) {
