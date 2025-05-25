@@ -5,10 +5,11 @@ body {
   margin: 0%;
   padding-left: 0%;
 }
-#all{
-  position: absolute;
-  left:30%;
-  width:60%;
+#all {
+    margin-left: 340px; /* Same as #sidebar width */
+    width: calc(100% - 340px); /* Fill remaining space */
+    padding: 20px;
+    overflow-x: auto;
 }
 
 #sidebar { 
