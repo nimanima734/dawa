@@ -81,9 +81,9 @@
                <div class="product-row-item">
                 <span class="product-name">{{ stat.produit.name }}</span>
                 <span class="daily-sales">{{ stat.nbr_vente_par_jour }}</span>
-                <span class="daily-revenue">${{ stat.total_vente_jour }}</span>
+                <span class="daily-revenue">{{ stat.total_vente_jour }}DA</span>
                 <span class="monthly-sales">{{ stat.nbr_vente_par_mois }}</span>
-                <span class="monthly-revenue">${{ stat.total_vente_mois }}</span>
+                <span class="monthly-revenue">{{ stat.total_vente_mois }}DA</span>
                </div>
               {% endfor %}
             </section>
