@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import random
 from django.core.mail import send_mail
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import  get_object_or_404
 
 @login_required(login_url='login')
 def HomePageView(request):
