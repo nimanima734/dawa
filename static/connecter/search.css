@@ -8,6 +8,7 @@ body {
 #all{
   position: absolute;
   left:30%;
+  width:40%;
 }
 
 #sidebar { 
