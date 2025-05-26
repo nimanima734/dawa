@@ -4,7 +4,7 @@ body {
   padding: 0%;
   margin: 0%;
   padding-left: 0%;
-}
+}s
 #all {
     margin-left: 340px; /* Same as #sidebar width */
     width: calc(100% - 340px); /* Fill remaining space */
