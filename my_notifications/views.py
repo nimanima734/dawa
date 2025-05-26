@@ -3,13 +3,11 @@ from .models import Notification
 from Produits.models import Produits
 from django.utils import timezone
 from Produits.models import Produits 
-from django.db.models import Q
+
 
 def ShowNotifications(request):
     user = request.user
-    # notifications = Notification.objects.filter(user=user) 
-    notifications = Notification.objects.filter(Q(user=user) | Q(user__isnull=True))
-
+    notifications = Notification.objects.filter(user=user) 
     unread_count = notifications.filter(unread=True).count() 
     
     context = {
@@ -61,7 +59,7 @@ def check_for_notifications(user ,product ):
                 product=product,
                 text_preview=f"Your medication {product.name} is expiring soon.",
                 date=timezone.now(),
-                user=None ,
+                user=user ,
             )
            
         if product.is_low_stock():
@@ -70,5 +68,5 @@ def check_for_notifications(user ,product ):
                 product=product,
                 text_preview=f"The stock of {product.name} is low.",
                 date=timezone.now(),
-                user=None ,
+                user=user ,
             )
