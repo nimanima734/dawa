@@ -5,12 +5,17 @@ body {
   margin: 0%;
   padding-left: 0%;
 }
+#all {
+    margin-left: 340px; /* Same as #sidebar width */
+    width: calc(100% - 340px); /* Fill remaining space */
+    padding: 20px;
+    overflow-x: auto;
+}
 
-
-#sidebar {
+#sidebar { 
+  position:fixed;
   width: 340px;
-  height: 100vh; 
-  position: fixed; 
+  height: 100vh;
   background-color: rgb(220, 220, 220);
   padding-top: 100px;
   border: 1px solid rgb(201, 199, 199);
@@ -31,19 +36,8 @@ body {
   transition: background-color 0.3s ease;
 }
 
-#sidebar button.users-button {
-  background-color: rgba(255, 255, 255, 1);
-  /* لون سماوي خفيف */
-  font-weight: bold;
-}
-
-#sidebar button.users-button:hover {
-  background-color: rgba(255, 255, 255, 1);
-  transform: scale(1.05);
-}
-
 #sidebar button:hover {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: darkgray;
 }
 
 #sidebar button img {
@@ -52,7 +46,6 @@ body {
   width: 20px;
   height: 20px;
 }
-
 
 .word1 {
   color: rgba(16, 55, 88, 1);
@@ -102,11 +95,11 @@ small {
   font-weight: bold;
   text-transform: uppercase;
   border-bottom: 2px solid #ccc;
-  color: black;
+  color: rgba(16, 55, 88, 1);
   margin-top: 20px;
   margin-bottom: 10px;
   gap: 43px; 
-/* Fill remaining space */ 
+  width: calc(100% - 340px); /* Fill remaining space */
 } 
 #product-row{
      display: flex;
@@ -118,8 +111,8 @@ small {
   margin-top: 20px;
   margin-bottom: 10px;
   margin-left:10px;
-  gap: 55px;  
-/* Fill remaining space */
+  gap: 55px; 
+   width: calc(100% - 340px); /* Fill remaining space */
 } 
 
 #page {
@@ -128,11 +121,10 @@ small {
 }
 
 #side {
-
   display: block; 
   
-  height:100hv;
-  width:40%;
+  hight:100hv;
+  widht:40%;
 }
 
 #heading2 {
@@ -145,7 +137,12 @@ small {
   color: rgba(16, 55, 88, 1);
 }
 
-
+#product-heads span,
+#product-row span {
+  flex: 1;
+  /* Each span will grow to fill available space and be equal in width*/
+  text-align: center;
+}
 
 .product-img {
   width: 10px;
@@ -161,3 +158,4 @@ small {
   justify-content: center;
   align-items: center;
 }    
+   
