@@ -65,7 +65,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'Gestion_Pharma.ip_restrict_middleware.RestrictIPMiddleware',
+    'Gestion_Pharma.ip_restrict_middleware.RestrictIPMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
