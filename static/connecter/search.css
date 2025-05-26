@@ -121,6 +121,8 @@ small {
 }
 
 #side {
+  position:absolute;
+  left:27%
   display: block; 
   
   height:100hv;
