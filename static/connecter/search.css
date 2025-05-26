@@ -5,15 +5,9 @@ body {
   margin: 0%;
   padding-left: 0%;
 }
-#all {
-    margin-left: 340px; /* Same as #sidebar width */
-    width: calc(100% - 340px); /* Fill remaining space */
-    padding: 20px;
-    overflow-x: auto;
-}
+
 
 #sidebar { 
-  position:fixed;
   width: 340px;
   height: 100vh;
   background-color: rgb(220, 220, 220);
@@ -99,7 +93,6 @@ small {
   margin-top: 20px;
   margin-bottom: 10px;
   gap: 43px; 
-  width: calc(100% - 340px); /* Fill remaining space */
 } 
 #product-row{
      display: flex;
@@ -112,7 +105,6 @@ small {
   margin-bottom: 10px;
   margin-left:10px;
   gap: 55px; 
-   width: calc(100% - 340px); /* Fill remaining space */
 } 
 
 #page {
