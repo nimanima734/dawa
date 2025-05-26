@@ -42,8 +42,9 @@
         </div>
         <div id="side">
             <h1 id="heading2">Search Results</h1>
-              {% if donnees %}
+           
             <div id="product-heads">
+                 {% if donnees %}
                 <span>image</span>
                 <span>Product Name</span>
                 <span>Category</span>
@@ -68,7 +69,7 @@
                 <span>{{ produit.name }}</span>
                 <span>{{ produit.category }}</span>
                 <span>{{ produit.quantite }}</span>
-                <span>{{ produit.price }} FCFA</span>
+                <span>{{ produit.price }} DA</span>
                 <span>{{ produit.description }}</span>
                 <span>{{ produit.date_ajout }}</span>
                 <span>{{ produit.date_expiration }}</span>
