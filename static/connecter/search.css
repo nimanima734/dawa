@@ -102,11 +102,13 @@ small {
   font-weight: bold;
   text-transform: uppercase;
   border-bottom: 2px solid #ccc;
-  color: rgba(16, 55, 88, 1);
+  color: black;
   margin-top: 20px;
   margin-bottom: 10px;
   gap: 43px; 
-/* Fill remaining space */
+    position:absolute;
+  left:60%
+/* Fill remaining space */ 
 } 
 #product-row{
      display: flex;
@@ -118,7 +120,9 @@ small {
   margin-top: 20px;
   margin-bottom: 10px;
   margin-left:10px;
-  gap: 55px; 
+  gap: 55px;  
+    position:absolute;
+  left:60%
 /* Fill remaining space */
 } 
 
@@ -128,8 +132,7 @@ small {
 }
 
 #side {
-  position:absolute;
-  left:60%
+
   display: block; 
   
   height:100hv;
