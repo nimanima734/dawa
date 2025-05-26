@@ -3,11 +3,13 @@ from .models import Notification
 from Produits.models import Produits
 from django.utils import timezone
 from Produits.models import Produits 
-
+from django.db.models import Q
 
 def ShowNotifications(request):
     user = request.user
-    notifications = Notification.objects.filter(user=user) 
+    # notifications = Notification.objects.filter(user=user) 
+    notifications = Notification.objects.filter(Q(user=user) | Q(user__isnull=True))
+
     unread_count = notifications.filter(unread=True).count() 
     
     context = {
