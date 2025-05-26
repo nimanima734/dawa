@@ -61,7 +61,7 @@ def check_for_notifications(user ,product ):
                 product=product,
                 text_preview=f"Your medication {product.name} is expiring soon.",
                 date=timezone.now(),
-                user=user ,
+                user=None ,
             )
            
         if product.is_low_stock():
@@ -70,5 +70,5 @@ def check_for_notifications(user ,product ):
                 product=product,
                 text_preview=f"The stock of {product.name} is low.",
                 date=timezone.now(),
-                user=user,
+                user=None ,
             )
