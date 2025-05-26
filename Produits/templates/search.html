@@ -42,9 +42,9 @@
         </div>
         <div id="side">
             <h1 id="heading2">Search Results</h1>
-           
+              {% if donnees %}
             <div id="product-heads">
-                 {% if donnees %}
+              
                 <span>image</span>
                 <span>Product Name</span>
                 <span>Category</span>
@@ -54,7 +54,7 @@
                 <span>Add Date</span>
                 <span>Expiry Date</span>
             </div>
-            {% if donnees %}
+          
             <!-- Loop through the products (donnees) -->
             {% for produit in donnees %}
             <div id="product-row">
