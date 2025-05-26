@@ -27,7 +27,17 @@ SECRET_KEY = 'django-insecure-q)=2&4el&fnd!ju_r4uf-t8xz)8r4r$cg$2$t2g2q8yx206c%4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dawapharmaa.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'dawapharmaa.onrender.com',
+    'localhost',
+    '127.0.0.1',
+    '192.168.8.114',
+    '192.168.8.117',
+    '192.168.8.140',
+    '192.168.1.7',
+    '192.168.8.132',# <-- هنا تم تصحيح السطر
+]
+
 
 # Application definition
 
