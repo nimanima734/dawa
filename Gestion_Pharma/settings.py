@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-q)=2&4el&fnd!ju_r4uf-t8xz)8r4r$cg$2$t2g2q8yx206c%4
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'dawapharmaa.onrender.com',
+    'dawapharmaa-zouv.onrender.com',
     'localhost',
     '127.0.0.1',# <-- هنا تم تصحيح السطر
 ]
