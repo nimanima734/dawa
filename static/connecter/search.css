@@ -93,9 +93,11 @@ small {
   margin-top: 20px;
   margin-bottom: 10px;
   gap: 43px; 
+  width:calc(100%-340px);
 } 
 #product-row{
      display: flex;
+   width:calc(100%-340px);
   padding: 20px;
   background-color: #f4f4f4;
   text-transform: uppercase;
