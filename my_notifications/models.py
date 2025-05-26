@@ -10,7 +10,7 @@ class Notification(models.Model):
         (3, 'General Alert')
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True, related_name="show_notifications")  
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="show_notifications")  
     sender = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="sent_notifications")  
     notification_type = models.IntegerField(choices=NOTIFICATION_TYPES)  
     product = models.ForeignKey(Produits, on_delete=models.CASCADE, null=True, blank=True, related_name="notifications")  
